@@ -1,8 +1,12 @@
 # p5-toolkit
 Some useful functions for p5 in global mode
 
-## Pixel glitch effects
+## Basic rules for a single generative image 
+* Only use ```setup()``` and no animation loops
+* Each effect as a seperate function 
+* Operating on graphics buffers with p5's ```createGraphics()``` 
 
+## [Example] fuzzyX 
 ```javascript
 function fuzzyX(design, fuzzyness) {
   const effect = createGraphics(design.width, design.height);

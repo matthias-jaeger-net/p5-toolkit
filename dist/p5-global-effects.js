@@ -7,6 +7,10 @@
  */
 // eslint-disable-next-line no-unused-vars
 class Effects {
+  constructor() {
+    /* eslint no-console: "error" */
+    console.log('Effects running');
+  }
   /** RANDOM NUMBER TOOLS */
 
   // Returns a value with random positive or negative offset

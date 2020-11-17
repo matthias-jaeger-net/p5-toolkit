@@ -180,35 +180,22 @@ class Effects {
     return gfx;
   }
 
+  // Convert pixels from a buffer in a 2D Array of colors
+  static grid2d(buf) {
+    const arr = [];
+    for (let x = 0; x < buf.width; x += 1) {
+      const row = [];
+      for (let y = 0; y < buf.height; y += 1) {
+        row.push(buf.get(x, y));
+      }
+      arr.push(row);
+    }
+    return arr;
+  }
+
   shiftedPixels(buffer) {
-    // Convert pixels from a buffer in a 2D Array of colors
-    function grid2d(buf) {
-      const arr = [];
-      for (let x = 0; x < buf.width; x += 1) {
-        const row = [];
-        for (let y = 0; y < buf.height; y += 1) {
-          row.push(buf.get(x, y));
-        }
-        arr.push(row);
-      }
-      return arr;
-    }
-
-    // Returns a buffer from 2D color array
-    function gridToBuffer(buf, grid, context) {
-      const gfx = context.createGraphics(buf.width, buf.height);
-      gfx.loadPixels();
-      for (let x = 0; x < gfx.width; x += 1) {
-        for (let y = 0; y < gfx.height; y += 1) {
-          gfx.set(x, y, grid[x][y]);
-        }
-      }
-      gfx.updatePixels();
-      return gfx;
-    }
-
     const gfx = this.context.createGraphics(buffer.width, buffer.height);
-    const grid = grid2d(buffer);
+    const grid = this.grid2d(buffer);
     for (let x = 0; x < gfx.width; x += 1) {
       const offset = this.context.floor(this.context.random(gfx.width * 0.5));
       const cs = [];
@@ -224,7 +211,14 @@ class Effects {
       }
       grid[x] = this.randomProb() ? cs.sort() : cs;
     }
-    return gridToBuffer(gfx, grid, this);
+    gfx.loadPixels();
+    for (let x = 0; x < gfx.width; x += 1) {
+      for (let y = 0; y < gfx.height; y += 1) {
+        gfx.set(x, y, grid[x][y]);
+      }
+    }
+    gfx.updatePixels();
+    return gfx;
   }
 
   /** LIGHT EFFECTS */

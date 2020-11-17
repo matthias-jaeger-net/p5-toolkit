@@ -1,0 +1,19 @@
+{
+  "name": "p5-toolkit",
+  "version": "0.0.1",
+  "description": "Toolkit for processing/p5 sketches in global mode",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthias-jaeger-net/p5-toolkit.git"
+  },
+  "author": "Matthias Jäger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matthias-jaeger-net/p5-toolkit/issues"
+  },
+  "homepage": "https://github.com/matthias-jaeger-net/p5-toolkit#readme"
+}

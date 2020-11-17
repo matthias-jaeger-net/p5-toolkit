@@ -1,37 +1,48 @@
 # p5-toolkit
-Some useful functions for p5 in global mode
 
-## Basic rules for a single generative image 
+
+## Basic rules for a single generative image
 * Only use ```setup()``` and no animation loops
-* Each effect as a seperate function 
-* Operating on graphics buffers with p5's ```createGraphics()``` 
+* Operating on graphics buffers with p5's ```createGraphics()```
 
-## [Example] fuzzyX 
+
+## Pixel Effects
 ```javascript
-function fuzzyX(design, fuzzyness) {
-  const effect = createGraphics(design.width, design.height);
-  effect.loadPixels();
-  for (let y = 0; y < effect.height; y++) {
-    for (let x = 0; x < effect.width; x++) {
-      const fuzzyX = floor(random(x - random(fuzzyness), x + random(fuzzyness)));
-      const c = design.get(fuzzyX, y);
-      effect.set(x, y, c);
-    }
-  }
-  effect.updatePixels();
-  return effect;
-}
+/**
+ *  Basic 2D / 2D Example
+ */
 
+// Import the effects
+const effects = new Effects();
 
+// Use the effects in your sketch
 function setup() {
+  // Creates the global buffer <canvas>
   createCanvas(800, 800);
 
-  const design = createGraphics(width, height, WEBGL);
-  design.background("#A542EF");
-  design.noStroke();
-  design.fill("#1442FE");
-  design.sphere(180);
-  design.loadPixels();
-  
-  image(fuzzyX(design, 100), 0, 0);
+  /* Design */
+  // A random background color
+  background(random(255), random(255), random(255));
+
+  // Disable the deafult outline on shapes
+  noStroke();
+
+  // Set a random fill color
+  fill(random(255), random(255), random(255));
+
+  // Draw a circle shape in the center
+  circle(width * 0.5, height * 0.5, width * 0.3);
+
+  /* Apply the effects */
+  // Get the current design pixeles
+  const design = get();
+
+  // Clear the stage
+  clear();
+
+  // Verbose:
+  const myEffect = effects.mosaic(design);
+
+  // Render the effect with the image() function
+  image(myEffect, 0, 0);
 }

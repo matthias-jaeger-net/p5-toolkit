@@ -8,15 +8,10 @@
 
 ## Pixel Effects
 ```javascript
-/**
- *  Basic 2D / 2D Example
- */
-
-// Import the effects
-const effects = new Effects();
-
-// Use the effects in your sketch
 function setup() {
+  // Import the effects
+  const effects = new Effects();
+
   // Creates the global buffer <canvas>
   createCanvas(800, 800);
 

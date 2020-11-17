@@ -195,8 +195,8 @@ class Effects {
     }
 
     // Returns a buffer from 2D color array
-    function gridToBuffer(buf, grid) {
-      const gfx = this.context.createGraphics(buf.width, buf.height);
+    function gridToBuffer(buf, grid, context) {
+      const gfx = context.createGraphics(buf.width, buf.height);
       gfx.loadPixels();
       for (let x = 0; x < gfx.width; x += 1) {
         for (let y = 0; y < gfx.height; y += 1) {
@@ -224,7 +224,7 @@ class Effects {
       }
       grid[x] = this.randomProb() ? cs.sort() : cs;
     }
-    return gridToBuffer(gfx, grid);
+    return gridToBuffer(gfx, grid, this);
   }
 
   /** LIGHT EFFECTS */

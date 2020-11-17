@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/matthias-jaeger-net/p5-toolkit/issues"
   },
-  "homepage": "https://github.com/matthias-jaeger-net/p5-toolkit#readme"
+  "homepage": "https://github.com/matthias-jaeger-net/p5-toolkit#readme",
+  "dependencies": {
+    "eslint-config-p5js": "^1.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
 }

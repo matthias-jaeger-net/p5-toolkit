@@ -7,20 +7,21 @@
  */
 // eslint-disable-next-line no-unused-vars
 class Effects {
-  constructor() {
-    /* eslint no-console: "error" */
+  constructor(context) {
+    this.context = context;
+    // eslint-disable-next-line no-console
     console.log('Effects running');
   }
   /** RANDOM NUMBER TOOLS */
 
   // Returns a value with random positive or negative offset
   randomOffset(val, off) {
-    return val + random(-off, off);
+    return val + this.context.random(-off, off);
   }
 
   // Shorthand for a random number between 0 and 1
   randomZeroOne() {
-    return random(0.0, 1.0);
+    return this.context.random(0.0, 1.0);
   }
 
   // Returns true with a 50% percent probability
@@ -42,7 +43,10 @@ class Effects {
 
   // Returns a random color within the given bounds
   randomShaped(min, max) {
-    return color(random(min, max), random(min, max), random(min, max));
+    const r = this.context.random(min, max);
+    const g = this.context.random(min, max);
+    const b = this.context.random(min, max);
+    return this.context.color(r, g, b);
   }
 
   // Returns a random color
@@ -62,18 +66,18 @@ class Effects {
 
   // Returns a randomly changed color
   shadedColor(col) {
-    const r = this.randomOffset(red(col), 10);
-    const g = this.randomOffset(green(col), 10);
-    const b = this.randomOffset(blue(col), 10);
-    return color(r, g, b);
+    const r = this.randomOffset(this.context.red(col), 10);
+    const g = this.randomOffset(this.context.green(col), 10);
+    const b = this.randomOffset(this.context.blue(col), 10);
+    return this.context.color(r, g, b);
   }
 
   // Returns a randomly changed color and public offset
   shadedColorOff(col, off) {
-    const r = this.randomOffset(red(col), off);
-    const g = this.randomOffset(green(col), off);
-    const b = this.randomOffset(blue(col), off);
-    return color(r, g, b);
+    const r = this.randomOffset(this.context.red(col), off);
+    const g = this.randomOffset(this.context.green(col), off);
+    const b = this.randomOffset(this.context.blue(col), off);
+    return this.context.color(r, g, b);
   }
 
   /** COLOR PALETTES */
@@ -95,43 +99,18 @@ class Effects {
     return arr;
   }
 
-  /** COLOR ABSTRACTION GRIDS */
-
-  // Convert pixels from a buffer in a 2D Array of colors
-  grid2d(buffer) {
-    const arr = [];
-    for (let x = 0; x < buffer.width; x += 1) {
-      const row = [];
-      for (let y = 0; y < buffer.height; y += 1) {
-        row.push(buffer.get(x, y));
-      }
-      arr.push(row);
-    }
-    return arr;
-  }
-
-  // Returns a buffer from 2D color array
-  gridToBuffer(buffer, grid) {
-    const gridToBuffer = createGraphics(buffer.width, buffer.height);
-    gridToBuffer.loadPixels();
-    for (let x = 0; x < gridToBuffer.width; x += 1) {
-      for (let y = 0; y < gridToBuffer.height; y += 1) {
-        gridToBuffer.set(x, y, grid[x][y]);
-      }
-    }
-    gridToBuffer.updatePixels();
-    return gridToBuffer;
-  }
-
   /** TEXTURE GENERATORS */
 
   // Returns a randomly striped graphics buffer
   stripes(res, colors) {
-    const stripes = createGraphics(res, res);
+    const stripes = this.context.createGraphics(res, res);
     for (let x = 0; x < stripes.width; x += 1) {
-      const mapping = colors[floor(map(x, 0, stripes.width, 0, colors.length))];
-      const c = (this.randomProb()) ? mapping : random(colors);
-      stripes.stroke(this.shadedColor(c));
+      const mapping = this.context.map(x, 0, stripes.width, 0, colors.length);
+      const index = this.context.floor(mapping);
+      const mappedColor = colors[index];
+      const randomizedColor = this.context.random(colors);
+      const fuzzyColor = (this.randomProb()) ? mappedColor : randomizedColor;
+      stripes.stroke(this.shadedColor(fuzzyColor));
       stripes.line(x, 0, x, stripes.height);
     }
     return stripes;
@@ -139,12 +118,16 @@ class Effects {
 
   // Returns a randomly dotted graphics buffer
   dots(res, colors) {
-    const gfx = createGraphics(res, res);
-    gfx.background(random(colors));
+    const gfx = this.context.createGraphics(res, res);
+    gfx.background(this.context.random(colors));
     gfx.noStroke();
-    for (let x = 0; x < res; x += 1) {
-      gfx.fill(this.shadedColor(random(colors)));
-      gfx.circle(random(gfx.width), random(gfx.height), random(res * 0.3));
+    for (let t = 0; t < res; t += 1) {
+      const col = this.shadedColor(this.context.random(colors));
+      const x = this.context.random(gfx.width);
+      const y = this.context.random(gfx.height);
+      const d = this.context.random(res * 0.3);
+      gfx.fill(col);
+      gfx.circle(x, y, d);
     }
     return gfx;
   }
@@ -153,12 +136,13 @@ class Effects {
 
   // Returns a graphics buffer with dramatically changed colors
   randomBlurX(buffer) {
-    const gfx = createGraphics(buffer.width, buffer.height);
+    const gfx = this.context.createGraphics(buffer.width, buffer.height);
     const bufferPixels = buffer.get();
     gfx.loadPixels();
     for (let y = 0; y < buffer.width; y += 1) {
       for (let x = 0; x < buffer.height; x += 1) {
-        const col = bufferPixels.get(floor(random(x)), y);
+        const offX = this.context.floor(this.context.random(x));
+        const col = bufferPixels.get(offX, y);
         gfx.set(x, y, col);
       }
     }
@@ -168,7 +152,7 @@ class Effects {
 
   // Returns a graphics buffer with dramatically changed colors
   fuzzyBlurX(buffer) {
-    const gfx = createGraphics(buffer.width, buffer.height);
+    const gfx = this.context.createGraphics(buffer.width, buffer.height);
     const bufferPixels = buffer.get();
     gfx.loadPixels();
     for (let x = 0; x < buffer.width; x += 1) {
@@ -182,7 +166,7 @@ class Effects {
   }
 
   mosaic(buffer) {
-    const gfx = createGraphics(buffer.width, buffer.height);
+    const gfx = this.context.createGraphics(buffer.width, buffer.height);
     const design = buffer.get();
     gfx.noStroke();
     const s = buffer.width / 100.0;
@@ -197,10 +181,36 @@ class Effects {
   }
 
   shiftedPixels(buffer) {
-    const gfx = createGraphics(buffer.width, buffer.height);
-    const grid = this.grid2d(buffer);
+    // Convert pixels from a buffer in a 2D Array of colors
+    function grid2d(buf) {
+      const arr = [];
+      for (let x = 0; x < buf.width; x += 1) {
+        const row = [];
+        for (let y = 0; y < buf.height; y += 1) {
+          row.push(buf.get(x, y));
+        }
+        arr.push(row);
+      }
+      return arr;
+    }
+
+    // Returns a buffer from 2D color array
+    function gridToBuffer(buf, grid) {
+      const gfx = this.context.createGraphics(buf.width, buf.height);
+      gfx.loadPixels();
+      for (let x = 0; x < gfx.width; x += 1) {
+        for (let y = 0; y < gfx.height; y += 1) {
+          gfx.set(x, y, grid[x][y]);
+        }
+      }
+      gfx.updatePixels();
+      return gfx;
+    }
+
+    const gfx = this.context.createGraphics(buffer.width, buffer.height);
+    const grid = grid2d(buffer);
     for (let x = 0; x < gfx.width; x += 1) {
-      const offset = floor(random(gfx.width * 0.5));
+      const offset = this.context.floor(this.context.random(gfx.width * 0.5));
       const cs = [];
       const max = grid[x].length;
       for (let y = max - offset; y < max; y += 1) {
@@ -214,7 +224,7 @@ class Effects {
       }
       grid[x] = this.randomProb() ? cs.sort() : cs;
     }
-    return this.gridToBuffer(gfx, grid);
+    return gridToBuffer(gfx, grid);
   }
 
   /** LIGHT EFFECTS */
@@ -222,25 +232,28 @@ class Effects {
   // Sets a white light in a random position in a buffer
   randomLight(buffer) {
     return buffer.pointLight(255, 255, 255,
-      random(-buffer.width * 0.5, buffer.width * 0.5),
-      random(-buffer.height * 0.5, buffer.height * 0.5),
-      random(-buffer.width * 0.5, buffer.width * 0.5));
+      this.context.random(-buffer.width * 0.5, buffer.width * 0.5),
+      this.context.random(-buffer.height * 0.5, buffer.height * 0.5),
+      this.context.random(-buffer.width * 0.5, buffer.width * 0.5));
   }
 
   // Sets a colored light in a random position in a buffer
   randomColoredLight(buffer, col) {
-    return buffer.pointLight(red(col), green(col), blue(col),
-      random(-buffer.width * 0.5, buffer.width * 0.5),
-      random(-buffer.height * 0.5, buffer.height * 0.5),
-      random(-buffer.width * 0.5, buffer.width * 0.5));
+    const r = this.context.red(col);
+    const g = this.context.green(col);
+    const b = this.context.blue(col);
+    const x = this.context.random(-buffer.width * 0.5, buffer.width * 0.5);
+    const y = this.context.random(-buffer.height * 0.5, buffer.height * 0.5);
+    const z = this.context.random(-buffer.width * 0.5, buffer.width * 0.5);
+    return buffer.pointLight(r, g, b, x, y, z);
   }
 
   /** MASKING EFFECTS */
 
   // Returns a buffer with a grainy alpha mask
   grainMask(buffer, prob) {
-    const grainMask = buffer.get();
-    const masking = createGraphics(buffer.width, buffer.height);
+    const gfx = buffer.get();
+    const masking = this.context.createGraphics(buffer.width, buffer.height);
     for (let x = 0; x < masking.width; x += 1) {
       for (let y = 0; y < masking.height; y += 1) {
         if (this.givenProb(prob)) {
@@ -248,14 +261,14 @@ class Effects {
         }
       }
     }
-    grainMask.mask(masking.get());
-    return grainMask;
+    gfx.mask(masking.get());
+    return gfx;
   }
 
   // Returns a buffer with a striped alpha mask
   linesMask(buffer, prob) {
     const grainMask = buffer.get();
-    const masking = createGraphics(buffer.width, buffer.height);
+    const masking = this.context.createGraphics(buffer.width, buffer.height);
     for (let y = 0; y < masking.height; y += 1) {
       if (this.givenProb(prob)) {
         masking.line(0, y, masking.width, y);

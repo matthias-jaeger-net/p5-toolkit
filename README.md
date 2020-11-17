@@ -25,40 +25,40 @@ function setup() {
 ## Available Methods
 
 ### RANDOM NUMBER TOOLS
-```randomOffset(val, off)``` A value with random positive or negative offset
-```randomZeroOne()``` A random number between 0 and 1
-```randomProb()``` True with a 50% percent probability
-```givenProb(prob)``` True/false by given probability
-```fuzzyValue(val)``` Either a slightly changed or dramtically reduced value
+- ```randomOffset(val, off)``` A value with random positive or negative offset
+- ```randomZeroOne()``` A random number between 0 and 1
+- ```randomProb()``` True with a 50% percent probability
+- ```givenProb(prob)``` True/false by given probability
+- ```fuzzyValue(val)``` Either a slightly changed or dramtically reduced value
 
 ### COLOR TOOLS
-```randomColor()``` Any possible color
-```randomPastelColor()``` A brighter color
-```randomDarkColor()``` A darker color
-```shadedColor(col)``` A randomly changed color with low offset
-```shadedColorOff(col, off)``` A randomly changed color and public offset
+- ```randomColor()``` Any possible color
+- ```randomPastelColor()``` A brighter color
+- ```randomDarkColor()``` A darker color
+- ```shadedColor(col)``` A randomly changed color with low offset
+- ```shadedColorOff(col, off)``` A randomly changed color and public offset
 
 ### COLOR PALETTES
-```randomPalette(col, len)``` A color palette with a number of colors and a initial color
-```relatedPalette(col, len)``` A color palette with colors based on the initial color
+- ```randomPalette(col, len)``` A color palette with a number of colors and a initial color
+- ```relatedPalette(col, len)``` A color palette with colors based on the initial color
 
 ### TEXTURE GENERATORS
-```stripes(res, colors)``` A randomly striped graphics buffer
- ```dots(res, colors)```  A randomly dotted graphics buffer
+- ```stripes(res, colors)``` A randomly striped graphics buffer
+-  ```dots(res, colors)```  A randomly dotted graphics buffer
 
  ### PIXEL EFFECTS
-```randomBlurX(buffer) ``` A graphics buffer with dramatically changed colors
-```fuzzyBlurX(buffer)``` A graphics buffer with dramatically changed colors
-```mosaic(buffer)``` A graphics buffer with a tiled tesselation
-```shiftedPixels(buffer)``` A graphics buffer with sifted rows of pixels
+- ```randomBlurX(buffer) ``` A graphics buffer with dramatically changed colors
+- ```fuzzyBlurX(buffer)``` A graphics buffer with dramatically changed colors
+- ```mosaic(buffer)``` A graphics buffer with a tiled tesselation
+- ```shiftedPixels(buffer)``` A graphics buffer with sifted rows of pixels
 
 ### LIGHT EFFECTS
-```randomLight(buffer)```  Sets a white light in a random position in a buffer
-```randomColoredLight(buffer, col)``` Sets a colored light in a random position in a buffer
+- ```randomLight(buffer)```  Sets a white light in a random position in a buffer
+- ```randomColoredLight(buffer, col)``` Sets a colored light in a random position in a buffer
 
 ## MASKING EFFECTS
-```grainMask(buffer, prob)``` A buffer with a grainy alpha mask
-```linesMask(buffer, prob)``` A buffer with a striped alpha mask
+- ```grainMask(buffer, prob)``` A buffer with a grainy alpha mask
+- ```linesMask(buffer, prob)``` A buffer with a striped alpha mask
 
 
 ## Example Basic

@@ -1,6 +1,7 @@
 # p5-toolkit
 A small set of effects and useful functions for [p5.js](https://p5js.org/ "p5.js"), a JavaScript library for creative coding
 
+![matthias-jaeger-net](cover.png)
 
 ## Basic usage
 ```html
@@ -56,10 +57,13 @@ function setup() {
 - ```randomLight(buffer)```  Sets a white light in a random position in a buffer
 - ```randomColoredLight(buffer, col)``` Sets a colored light in a random position in a buffer
 
-## MASKING EFFECTS
+### MASKING EFFECTS
 - ```grainMask(buffer, prob)``` A buffer with a grainy alpha mask
 - ```linesMask(buffer, prob)``` A buffer with a striped alpha mask
 
+# Examples
+
+![matthias-jaeger-net](canvas.png)
 
 ## Example Basic
 https://editor.p5js.org/matthias-jaeger-net/sketches/PQrZMbk45

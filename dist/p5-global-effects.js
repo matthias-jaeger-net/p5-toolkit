@@ -180,22 +180,17 @@ class Effects {
     return gfx;
   }
 
-  // Convert pixels from a buffer in a 2D Array of colors
-  static grid2d(buf) {
-    const arr = [];
-    for (let x = 0; x < buf.width; x += 1) {
-      const row = [];
-      for (let y = 0; y < buf.height; y += 1) {
-        row.push(buf.get(x, y));
-      }
-      arr.push(row);
-    }
-    return arr;
-  }
-
   shiftedPixels(buffer) {
+    const grid = [];
+    for (let x = 0; x < buffer.width; x += 1) {
+      const row = [];
+      for (let y = 0; y < buffer.height; y += 1) {
+        row.push(buffer.get(x, y));
+      }
+      grid.push(row);
+    }
+
     const gfx = this.context.createGraphics(buffer.width, buffer.height);
-    const grid = this.grid2d(buffer);
     for (let x = 0; x < gfx.width; x += 1) {
       const offset = this.context.floor(this.context.random(gfx.width * 0.5));
       const cs = [];
@@ -211,6 +206,7 @@ class Effects {
       }
       grid[x] = this.randomProb() ? cs.sort() : cs;
     }
+
     gfx.loadPixels();
     for (let x = 0; x < gfx.width; x += 1) {
       for (let y = 0; y < gfx.height; y += 1) {
@@ -261,14 +257,14 @@ class Effects {
 
   // Returns a buffer with a striped alpha mask
   linesMask(buffer, prob) {
-    const grainMask = buffer.get();
+    const gfx = buffer.get();
     const masking = this.context.createGraphics(buffer.width, buffer.height);
     for (let y = 0; y < masking.height; y += 1) {
       if (this.givenProb(prob)) {
         masking.line(0, y, masking.width, y);
       }
     }
-    grainMask.mask(masking.get());
-    return grainMask;
+    gfx.mask(masking.get());
+    return gfx;
   }
 }

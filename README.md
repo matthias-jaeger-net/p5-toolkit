@@ -63,7 +63,7 @@ function setup() {
 
 # Examples
 
-![matthias-jaeger-net](canvas.png)
+![matthias-jaeger-net-2](canvas.png)
 
 ## Example Basic
 https://editor.p5js.org/matthias-jaeger-net/sketches/PQrZMbk45

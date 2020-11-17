@@ -1,6 +1,9 @@
 # p5-toolkit
-A small set of effects and useful functions for [p5.js](https://p5js.org/ "p5.js"), a JavaScript library for creative coding
-
+A small set of effects and useful functions for [p5.js](https://p5js.org/ "p5.js"),
+a JavaScript library for creative coding. The collection is written in a way that it can
+be used in 2D and WBGL sketched. Mostly I am targeting people who like to bump up their
+sketches and post process them a bit. It is still in develpoment and methods will be added.
+``` WARNING - do use not use this for professional projects - :D ```
 ![matthias-jaeger-net](cover.png)
 
 ## Basic usage

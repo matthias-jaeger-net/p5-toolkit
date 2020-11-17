@@ -8,10 +8,10 @@
 
 ## Pixel Effects
 ```javascript
-function setup() {
-  // Import the effects
-  const effects = new Effects();
+// Import the effects
+const effects = new Effects();
 
+function setup() {
   // Creates the global buffer <canvas>
   createCanvas(800, 800);
 

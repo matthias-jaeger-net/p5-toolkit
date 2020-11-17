@@ -27,18 +27,18 @@ class Effects {
   }
 
   mosaic(buffer) {
-    this.gfx = createGraphics(buffer.width, buffer.height);
-    this.design = buffer.get();
-    this.gfx.noStroke();
+    const gfx = createGraphics(buffer.width, buffer.height);
+    const design = buffer.get();
+    gfx.noStroke();
     const s = buffer.width / 100.0;
     for (let x = 0; x < buffer.width; x += this.s) {
       for (let y = 0; y < buffer.height; y += this.s) {
-        this.col = this.design.get(x, y);
-        this.gfx.fill(this.col);
-        this.gfx.rect(x, y, s, s);
+        const col = design.get(x, y);
+        gfx.fill(col);
+        gfx.rect(x, y, s, s);
       }
     }
-    return this.gfx;
+    return gfx;
   }
 
   shiftedPixels(buffer) {

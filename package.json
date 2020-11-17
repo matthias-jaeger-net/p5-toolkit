@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/matthias-jaeger-net/p5-toolkit#readme",
   "dependencies": {
-    "eslint-config-p5js": "^1.0.1"
+    "eslint-config-p5js": "^1.0.1",
+    "minify": "^6.0.1"
   },
   "devDependencies": {
     "eslint": "^7.13.0",

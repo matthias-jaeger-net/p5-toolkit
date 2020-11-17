@@ -14,12 +14,12 @@ class Effects {
   /** RANDOM NUMBER TOOLS */
 
   // Returns a value with random positive or negative offset
-  static randomOffset(val, off) {
+  randomOffset(val, off) {
     return val + random(-off, off);
   }
 
   // Shorthand for a random number between 0 and 1
-  static randomZeroOne() {
+  randomZeroOne() {
     return random(0.0, 1.0);
   }
 
@@ -41,7 +41,7 @@ class Effects {
   /** COLOR TOOLS */
 
   // Returns a random color within the given bounds
-  static randomShaped(min, max) {
+  randomShaped(min, max) {
     return color(random(min, max), random(min, max), random(min, max));
   }
 
@@ -98,7 +98,7 @@ class Effects {
   /** COLOR ABSTRACTION GRIDS */
 
   // Convert pixels from a buffer in a 2D Array of colors
-  static grid2d(buffer) {
+  grid2d(buffer) {
     const arr = [];
     for (let x = 0; x < buffer.width; x += 1) {
       const row = [];
@@ -111,7 +111,7 @@ class Effects {
   }
 
   // Returns a buffer from 2D color array
-  static gridToBuffer(buffer, grid) {
+  gridToBuffer(buffer, grid) {
     const gridToBuffer = createGraphics(buffer.width, buffer.height);
     gridToBuffer.loadPixels();
     for (let x = 0; x < gridToBuffer.width; x += 1) {
@@ -152,7 +152,7 @@ class Effects {
   /** PIXEL EFFECTS */
 
   // Returns a graphics buffer with dramatically changed colors
-  static randomBlurX(buffer) {
+  randomBlurX(buffer) {
     const gfx = createGraphics(buffer.width, buffer.height);
     const bufferPixels = buffer.get();
     gfx.loadPixels();
@@ -181,7 +181,7 @@ class Effects {
     return gfx;
   }
 
-  static mosaic(buffer) {
+  mosaic(buffer) {
     const gfx = createGraphics(buffer.width, buffer.height);
     const design = buffer.get();
     gfx.noStroke();
@@ -220,7 +220,7 @@ class Effects {
   /** LIGHT EFFECTS */
 
   // Sets a white light in a random position in a buffer
-  static randomLight(buffer) {
+  randomLight(buffer) {
     return buffer.pointLight(255, 255, 255,
       random(-buffer.width * 0.5, buffer.width * 0.5),
       random(-buffer.height * 0.5, buffer.height * 0.5),
@@ -228,7 +228,7 @@ class Effects {
   }
 
   // Sets a colored light in a random position in a buffer
-  static randomColoredLight(buffer, col) {
+  randomColoredLight(buffer, col) {
     return buffer.pointLight(red(col), green(col), blue(col),
       random(-buffer.width * 0.5, buffer.width * 0.5),
       random(-buffer.height * 0.5, buffer.height * 0.5),

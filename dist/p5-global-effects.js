@@ -1,43 +1,41 @@
 // eslint-disable-next-line no-unused-vars
 class Effects {
-  grid2d(buffer) {
-    this.arr = [];
-    for (let x = 0; x < buffer.width; x += 1) {
-      const row = [];
-      for (let y = 0; y < buffer.height; y += 1) {
-        row.push(buffer.get(x, y));
-      }
-      this.arr.push(row);
-    }
-
-    return this.arr;
-  }
-
-  gridToBuffer(buffer, grid) {
-    this.gfx = createGraphics(buffer.width, buffer.height);
-    this.gfx.loadPixels();
-    for (let x = 0; x < this.gfx.width; x += 1) {
-      for (let y = 0; y < this.gfx.height; y += 1) {
-        this.gfx.set(x, y, grid[x][y]);
-      }
-    }
-    this.gfx.updatePixels();
-
-    return this.gfx;
-  }
-
-  mosaic(buffer) {
+  static mosaic(buffer) {
     const gfx = createGraphics(buffer.width, buffer.height);
     const design = buffer.get();
     gfx.noStroke();
     const s = buffer.width / 100.0;
-    for (let x = 0; x < buffer.width; x += this.s) {
-      for (let y = 0; y < buffer.height; y += this.s) {
+    for (let x = 0; x < buffer.width; x += s) {
+      for (let y = 0; y < buffer.height; y += s) {
         const col = design.get(x, y);
         gfx.fill(col);
         gfx.rect(x, y, s, s);
       }
     }
+    return gfx;
+  }
+
+  static grid2d(buffer) {
+    const arr = [];
+    for (let x = 0; x < buffer.width; x += 1) {
+      const row = [];
+      for (let y = 0; y < buffer.height; y += 1) {
+        row.push(buffer.get(x, y));
+      }
+      arr.push(row);
+    }
+    return arr;
+  }
+
+  static gridToBuffer(buffer, grid) {
+    const gfx = createGraphics(buffer.width, buffer.height);
+    gfx.loadPixels();
+    for (let x = 0; x < gfx.width; x += 1) {
+      for (let y = 0; y < gfx.height; y += 1) {
+        gfx.set(x, y, grid[x][y]);
+      }
+    }
+    gfx.updatePixels();
     return gfx;
   }
 

@@ -189,7 +189,6 @@ class Effects {
       }
       grid.push(row);
     }
-
     const gfx = this.context.createGraphics(buffer.width, buffer.height);
     for (let x = 0; x < gfx.width; x += 1) {
       const offset = this.context.floor(this.context.random(gfx.width * 0.5));
@@ -237,6 +236,7 @@ class Effects {
 
   glitchY(buffer) {
     const gfx = this.context.createGraphics(buffer.width, buffer.height);
+    gfx.image(buffer, 0, 0);
     for (let t = 0; t < 550; t += 1) {
       const x = this.context.random(buffer.width);
       const y = this.context.random(buffer.height);

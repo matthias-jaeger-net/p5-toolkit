@@ -36,7 +36,7 @@ class Effects {
 
   // Returns a either a slightly changed or dramtically reduced value
   fuzzyValue(val) {
-    return (this.randomProb() ? this.randomOffset(val, 10.0) : random(val));
+    return (this.randomProb() ? this.randomOffset(val, 10.0) : this.random(val));
   }
 
   /** COLOR TOOLS */
@@ -214,6 +214,38 @@ class Effects {
       }
     }
     gfx.updatePixels();
+    return gfx;
+  }
+
+  // glitchY
+  glitchArea(buffer) {
+    const gfx = this.context.createGraphics(buffer.width, buffer.height);
+    gfx.loadPixels();
+    for (let x = 0; x < gfx.width; x += 1) {
+      const colors = [];
+      for (let y = 0; y < buffer.height; y += 1) {
+        colors.push(buffer.get(x, y));
+      }
+      colors.sort();
+      for (let y = 0; y < gfx.height; y += 1) {
+        gfx.set(x, y, colors[y]);
+      }
+    }
+    gfx.updatePixels();
+    return gfx;
+  }
+
+  glitchY(buffer) {
+    const gfx = this.context.createGraphics(buffer.width, buffer.height);
+    for (let t = 0; t < 550; t += 1) {
+      const x = this.context.random(buffer.width);
+      const y = this.context.random(buffer.height);
+      const ox = this.context.random(-20, 20);
+      const w = this.context.floor(this.context.random(1, 100));
+      const h = this.context.floor(this.context.random(1, 100));
+      const g = buffer.get(x, y, w, h);
+      gfx.image(this.glitchArea(g), x + ox, y);
+    }
     return gfx;
   }
 

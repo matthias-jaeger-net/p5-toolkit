@@ -2,9 +2,9 @@
   "name": "p5-toolkit",
   "version": "0.0.1",
   "description": "Toolkit for processing/p5 sketches in global mode",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --build tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -17,12 +17,12 @@
   },
   "homepage": "https://github.com/matthias-jaeger-net/p5-toolkit#readme",
   "dependencies": {
-    "eslint-config-p5js": "^1.0.1",
-    "minify": "^6.0.1"
+    "typescript": "^4.0.5"
   },
   "devDependencies": {
     "eslint": "^7.13.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1"
+    "eslint-plugin-import": "^2.22.1",
+    "minify": "^6.0.1"
   }
 }

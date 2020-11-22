@@ -77,7 +77,7 @@ function setup() {
   // Import the effects class
   const effects = new Effects(this);
   // Use it to create a color scheme
-  const  = effects.randomBrightColor();
+  const themeBright = effects.randomBrightColor();
   const themeBrightVariant = effects.shadedColor(themeBright);
   const themeDark = effects.randomDarkColor();
   const themeAccent = effects.randomColor()

@@ -1,4 +1,6 @@
 # p5-toolkit
+![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)
+
 A small set of effects and useful functions for [p5.js](https://p5js.org/ "p5.js"),
 a JavaScript library for creative coding. The collection is written in a way that it can
 be used in 2D and WBGL sketched. Mostly I am targeting people who like to bump up their

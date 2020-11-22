@@ -109,15 +109,15 @@ function setup() {
 - [x] ```stripes(res, colors)``` A randomly striped graphics buffer
 - [x] ```dots(res, colors)```  A randomly dotted graphics buffer
 ### Upcoming
-- [] ```hatchHorizontal(w, h, d)```
-- [] ```hatchVertical(w, h, d)```
-- [] ```hatchGrid(w, h, d)```
-- [] ```hatchDotGrid(w, h, d)```
-- [] ```hatchRandomDots(w, h, d)```
-- [] ```hatchRandomLines(w, h, d)```
-- [] ```hatchMaze(w, h, d)```
-- [] ```hatchSinusLines(w, h, d)```
-- [] ```hatchFlowField(w, h, d)```
+- [ ] ```hatchHorizontal(w, h, d)```
+- [ ] ```hatchVertical(w, h, d)```
+- [ ] ```hatchGrid(w, h, d)```
+- [ ] ```hatchDotGrid(w, h, d)```
+- [ ] ```hatchRandomDots(w, h, d)```
+- [ ] ```hatchRandomLines(w, h, d)```
+- [ ] ```hatchMaze(w, h, d)```
+- [ ] ```hatchSinusLines(w, h, d)```
+- [ ] ```hatchFlowField(w, h, d)```
 
 
 **Textures (Under construction)**

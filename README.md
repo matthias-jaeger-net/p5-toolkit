@@ -71,8 +71,8 @@ function setup() {
 - [x] ```shadedColorOff(col, off)``` A randomly changed color and public offset
 - [x] ```randomPalette(col, len)``` A color palette with a number of colors and a initial color
 - [x] ```relatedPalette(col, len)``` A color palette with colors based on the initial color
+- [ ] ```huePalette(col, len)``` A color palette with evenly spread hue based the initial color
 
-**Color tools (Under construction)**
 ```javascript
 function setup() {
   // Import the effects class
@@ -81,51 +81,44 @@ function setup() {
   const  = effects.randomBrightColor();
   const themeBrightVariant = effects.shadedColor(themeBright);
   const themeDark = effects.randomDarkColor();
-  const themeAccent = effects.randomColor();
-
+  const themeAccent = effects.randomColor()
   ...
   // Or use the ready mades
   // This will make an array with the inital color and 4 random colors
   const pal1 = effects.randomPalette(color(200, 10, 20), 5);
   // This will make an array with the inital color and 4 similar random colors
   const pal2 = effects.relatedPalette(color(200, 10, 20), 5);
+  ...
 }
 
 ```
 
- ### PIXEL EFFECTS
-- ```randomBlurX(buffer) ``` A graphics buffer with dramatically changed colors
-- ```fuzzyBlurX(buffer)``` A graphics buffer with dramatically changed colors
-- ```mosaic(buffer)``` A graphics buffer with a tiled tesselation
-- ```shiftedPixels(buffer)``` A graphics buffer with sifted rows of pixels
-- ```sortArea(buffer)``` A graphics buffer with color sorted pixels
-- ```glitch(buffer)``` A graphics buffer a dramatic pixel manipulation effect
+ ### Pixel effects
+- [x] ```randomBlurX(buffer) ``` A graphics buffer with dramatically changed colors
+- [x] ```fuzzyBlurX(buffer)``` A graphics buffer with dramatically changed colors
+- [x] ```mosaic(buffer)``` A graphics buffer with a tiled tesselation
+- [x] ```shiftedPixels(buffer)``` A graphics buffer with sifted rows of pixels
+- [x] ```sortColors(buffer)``` A graphics buffer with color sorted pixels
+- [x] ```glitch(buffer)``` A graphics buffer a dramatic pixel manipulation effect
 
+![matthias-jaeger-net-1](cover.png)
 
 ### TEXTURE GENERATORS
-- ```stripes(res, colors)``` A randomly striped graphics buffer
--  ```dots(res, colors)```  A randomly dotted graphics buffer
 
-**Textures (Under construction)**
-```javascript
-// Any hatch function will return a graphics buffer
-// Standard pattern:
-// @param {w} width in pixels
-// @param {h} height in pixels
-// @param {d} Number from 0 to 1 is influences the "densitity"
-// effectName(w, h, d)
-// Basic
-image(effects.hatchHorizontal(w, h, d), 0, 0);
-image(effects.hatchVertical(w, h, d), 0, 0);
-image(effects.hatchGrid(w, h, d), 0, 0);
-image(effects.hatchDotGrid(w, h, d), 0, 0);
-image(effects.hatchRandomDots(w, h, d), 0, 0);
-image(effects.hatchRandomLines(w, h, d), 0, 0);
-// Advanced
-image(effects.hatchMaze(w, h, d), 0, 0);
-image(effects.hatchSinusLines(w, h, d), 0, 0);
-image(effects.hatchFlowField(w, h, d), 0, 0);
-```
+### Old
+- [x] ```stripes(res, colors)``` A randomly striped graphics buffer
+- [x] ```dots(res, colors)```  A randomly dotted graphics buffer
+### Upcoming
+- [] ```hatchHorizontal(w, h, d)```
+- [] ```hatchVertical(w, h, d)```
+- [] ```hatchGrid(w, h, d)```
+- [] ```hatchDotGrid(w, h, d)```
+- [] ```hatchRandomDots(w, h, d)```
+- [] ```hatchRandomLines(w, h, d)```
+- [] ```hatchMaze(w, h, d)```
+- [] ```hatchSinusLines(w, h, d)```
+- [] ```hatchFlowField(w, h, d)```
+
 
 **Textures (Under construction)**
 ```javascript
@@ -155,11 +148,6 @@ image(effects.hatchFlowField(w, h, d), 0, 0);
 - ```randomProb()``` True with a 50% percent probability
 - ```givenProb(prob)``` True/false by given probability
 - ```fuzzyValue(val)``` Either a slightly changed or dramtically reduced value
-
-
-
-
-
 
 ### LIGHT EFFECTS
 - ```randomLight(buffer)```  Sets a white light in a random position in a buffer

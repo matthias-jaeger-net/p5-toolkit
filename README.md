@@ -4,27 +4,75 @@
 A small set of effects and useful functions for [p5.js](https://p5js.org/ "p5.js"),
 a JavaScript library for creative coding.
 
-## Ideas behind this
-This is a personal toolkit that I share with you. Feel free to use it in any way,
-shape or form you can imagine. It's written around the idea of using graphics buffers
-within your p5 sketch. A graphics buffer can be created with ``createGraphics(w, h, [renderer])``.
-When called, this function returns a ``p5.Graphics: offsscreen graphics buffer``.
-
-## The structure
-
-## A few eexamples
-The collection is written in a way that it can
-be used in 2D and WBGL sketched. Mostly I am targeting people who like to bump up their
-sketches and post process them a bit. It is still in develpoment and methods will be added.
 ![matthias-jaeger-net](cover.png)
 
-## Basic usage
+## Ideas behind this
+### A personal toolkit for creating static images with p5
+This is a personal toolkit that I share with you. Feel free to use it in any way,
+shape or form you can imagine. The toolkit (currrently in development) is a single
+JavaScript class you could add to any of your sketches and use it to post process
+the results. See the examples below how you might include it.
+
 **index.html**
 ```html
   <!-- Included in your index.html before the sketch -->
   <script src="p5-global-effects.min.js" defer></script>
   <script src="sketch.js" defer></script>
 ```
+
+### Using graphics buffers
+The class is written around the idea of using graphics buffers within your p5 sketch.
+A graphics buffer can be created with ``createGraphics(w, h, [renderer])``.
+When called, this function returns a ``p5.Graphics: offsscreen graphics buffer``, which is nothing
+other then a p5 sketch. You can use it's name with the dot syntax and draw anything into the buffer.
+It works just like in a regular sketch. With the ``image(img, x, y)`` function we can render any
+offscreen buffeer back onto the stage.
+
+**sketch.js | A custom buffer**
+```javascript
+function setup() {
+  // Import the effects class
+  const effects = new Effects(this);
+
+  // Create the canvas 2d context
+  createCanvas(800, 600);
+
+  // Create a 2d buffer with a design
+  const design = createGraphics(width, height);
+  design.circle(400, 300, 100);
+
+  // Render the design with an effect
+  const myEffect = effects.mosaic(design);
+  image(myEffect, 0, 0);
+}
+```
+
+**sketch.js | Getting any buffer**
+```javascript
+function setup() {
+  // Import the effects class
+  const effects = new Effects(this);
+
+  // Your design in global mode ...
+  createCanvas(800, 600);
+  circle(400, 300, 100);
+
+  // Create a 2d buffer with the design
+  const design = get();
+
+  // Render the design with an effect
+  image(effects.mosaic(design), 0, 0);
+}
+```
+
+
+## A few eexamples
+The collection is written in a way that it can
+be used in 2D and WBGL sketched. Mostly I am targeting people who like to bump up their
+sketches and post process them a bit. It is still in develpoment and methods will be added.
+
+## Basic usage
+
 **sketch.js**
 ```javascript
 function setup() {

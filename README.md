@@ -64,13 +64,13 @@ function setup() {
 ## All available Methods
 
 ### Color tools
--[x] ```randomColor()``` Any possible color
--[x] ```randomBrightColor()``` A brighter color
--[x] ```randomDarkColor()``` A darker color
--[x] ```shadedColor(col)``` A randomly changed color with low offset
--[x] ```shadedColorOff(col, off)``` A randomly changed color and public offset
--[x] ```randomPalette(col, len)``` A color palette with a number of colors and a initial color
--[x] ```relatedPalette(col, len)``` A color palette with colors based on the initial color
+- [x] ```randomColor()``` Any possible color
+- [x] ```randomBrightColor()``` A brighter color
+- [x] ```randomDarkColor()``` A darker color
+- [x] ```shadedColor(col)``` A randomly changed color with low offset
+- [x] ```shadedColorOff(col, off)``` A randomly changed color and public offset
+- [x] ```randomPalette(col, len)``` A color palette with a number of colors and a initial color
+- [x] ```relatedPalette(col, len)``` A color palette with colors based on the initial color
 
 **Color tools (Under construction)**
 ```javascript

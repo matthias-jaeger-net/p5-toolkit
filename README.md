@@ -4,8 +4,6 @@
 A small set of effects and useful functions for [p5.js](https://p5js.org/ "p5.js"),
 a JavaScript library for creative coding.
 
-![matthias-jaeger-net](cover.png)
-
 ## Ideas behind this
 ### A personal toolkit for creating static images with p5
 This is a personal toolkit that I share with you. Feel free to use it in any way,

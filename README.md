@@ -4,8 +4,7 @@
 A small set of effects and useful functions for [p5.js](https://p5js.org/ "p5.js"),
 a JavaScript library for creative coding.
 
-## Ideas behind this
-### A personal toolkit for creating static images with p5
+## A personal toolkit for creating static images with p5
 This is a personal toolkit that I share with you. Feel free to use it in any way,
 shape or form you can imagine. The toolkit (currrently in development) is a single
 JavaScript class you could add to any of your sketches and use it to post process
@@ -61,9 +60,9 @@ function setup() {
   image(effects.mosaic(design), 0, 0);
 }
 ```
-## All available Methods
+# All available Methods
 
-### Color tools
+## Color tools
 - [x] ```randomColor()``` Any possible color
 - [x] ```randomBrightColor()``` A brighter color
 - [x] ```randomDarkColor()``` A darker color
@@ -93,7 +92,7 @@ function setup() {
 
 ```
 
- ### Pixel effects
+ ## Pixel effects
 - [x] ```randomBlurX(buffer) ``` A graphics buffer with dramatically changed colors
 - [x] ```fuzzyBlurX(buffer)``` A graphics buffer with dramatically changed colors
 - [x] ```mosaic(buffer)``` A graphics buffer with a tiled tesselation
@@ -103,12 +102,9 @@ function setup() {
 
 ![matthias-jaeger-net-1](cover.png)
 
-### TEXTURE GENERATORS
-
-### Old
+## Hatches
 - [x] ```stripes(res, colors)``` A randomly striped graphics buffer
 - [x] ```dots(res, colors)```  A randomly dotted graphics buffer
-### Upcoming
 - [ ] ```hatchHorizontal(w, h, d)```
 - [ ] ```hatchVertical(w, h, d)```
 - [ ] ```hatchGrid(w, h, d)```
@@ -119,8 +115,6 @@ function setup() {
 - [ ] ```hatchSinusLines(w, h, d)```
 - [ ] ```hatchFlowField(w, h, d)```
 
-
-**Textures (Under construction)**
 ```javascript
 // Any hatch function will return a graphics buffer
 // Standard pattern:
@@ -128,6 +122,7 @@ function setup() {
 // @param {h} height in pixels
 // @param {d} Number from 0 to 1 is influences the "densitity"
 // effectName(w, h, d)
+
 // Basic
 image(effects.hatchHorizontal(w, h, d), 0, 0);
 image(effects.hatchVertical(w, h, d), 0, 0);
@@ -135,27 +130,33 @@ image(effects.hatchGrid(w, h, d), 0, 0);
 image(effects.hatchDotGrid(w, h, d), 0, 0);
 image(effects.hatchRandomDots(w, h, d), 0, 0);
 image(effects.hatchRandomLines(w, h, d), 0, 0);
+
 // Advanced
 image(effects.hatchMaze(w, h, d), 0, 0);
 image(effects.hatchSinusLines(w, h, d), 0, 0);
 image(effects.hatchFlowField(w, h, d), 0, 0);
 ```
 
+## Masking effects
+- ```grainMask(buffer, prob)``` A buffer with a grainy alpha mask
+- ```linesMask(buffer, prob)``` A buffer with a striped alpha mask
+```javascript
+// Currently
+const final1 = effects.grainMask(design, d)
+const final2 = effects.linesMask(design, d)
+```
 
-### Random number tools
+## Random number tools
 - ```randomOffset(val, off)``` A value with random positive or negative offset
 - ```randomZeroOne()``` A random number between 0 and 1
 - ```randomProb()``` True with a 50% percent probability
 - ```givenProb(prob)``` True/false by given probability
 - ```fuzzyValue(val)``` Either a slightly changed or dramtically reduced value
 
-### LIGHT EFFECTS
+## WEBGL light effects
 - ```randomLight(buffer)```  Sets a white light in a random position in a buffer
 - ```randomColoredLight(buffer, col)``` Sets a colored light in a random position in a buffer
 
-### MASKING EFFECTS
-- ```grainMask(buffer, prob)``` A buffer with a grainy alpha mask
-- ```linesMask(buffer, prob)``` A buffer with a striped alpha mask
 
 # A few examples
 

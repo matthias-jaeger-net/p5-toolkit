@@ -24,9 +24,9 @@ A graphics buffer can be created with ``createGraphics(w, h, [renderer])``.
 When called, this function returns a ``p5.Graphics: offsscreen graphics buffer``, which is nothing
 other then a p5 sketch. You can use it's name with the dot syntax and draw anything into the buffer.
 It works just like in a regular sketch. With the ``image(img, x, y)`` function we can render any
-offscreen buffeer back onto the stage.
+offscreen buffer back onto the stage.
 
-**sketch.js | A custom buffer**
+**A custom buffer**
 ```javascript
 function setup() {
   // Import the effects class
@@ -40,12 +40,11 @@ function setup() {
   design.circle(400, 300, 100);
 
   // Render the design with an effect
-  const myEffect = effects.mosaic(design);
-  image(myEffect, 0, 0);
+  image(effects.mosaic(design), 0, 0);
 }
 ```
 
-**sketch.js | Getting any buffer**
+**Getting any buffer**
 ```javascript
 function setup() {
   // Import the effects class
@@ -55,30 +54,37 @@ function setup() {
   createCanvas(800, 600);
   circle(400, 300, 100);
 
-  // Create a 2d buffer with the design
+  // When called with no arguments get() returns the currrent buffer
   const design = get();
 
   // Render the design with an effect
   image(effects.mosaic(design), 0, 0);
 }
 ```
-
-
-## A few eexamples
-The collection is written in a way that it can
-be used in 2D and WBGL sketched. Mostly I am targeting people who like to bump up their
-sketches and post process them a bit. It is still in develpoment and methods will be added.
-
-## Basic usage
-
-**sketch.js**
+### Additional features to highlight
+**Textures (Under construction)**
 ```javascript
-function setup() {
-  const effects = new Effects(this);
-  ...
-}
+// TODO textures
+
+// Scaler
+const sx = 100, sy = 100;
+
+// Dots
+image(effects.dotsRandom(width, height, sx, sy), 0, 0);
+
+// Stripes
+image(effects.stripes(width, height, sx, sy), 0, 0);
+image(effects.stripesRandom(width, height, sx, sy), 0, 0);
+image(effects.stripesXRandom(width, height, sx, sy), 0, 0);
+image(effects.stripesYRandom(width, height, sx, sy), 0, 0);
+
+// Grids
+image(effects.gridDots(width, height, sx, sy), 0, 0);
+image(effects.gridRects(width, height, sx, sy), 0, 0);
 ```
-## Available Methods
+
+
+## All available Methods
 
 ### RANDOM NUMBER TOOLS
 - ```randomOffset(val, off)``` A value with random positive or negative offset
@@ -116,7 +122,7 @@ function setup() {
 - ```grainMask(buffer, prob)``` A buffer with a grainy alpha mask
 - ```linesMask(buffer, prob)``` A buffer with a striped alpha mask
 
-# Examples
+# A few examples
 
 ![matthias-jaeger-net-2](canvas.png)
 

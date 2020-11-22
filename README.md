@@ -2,29 +2,33 @@
 ![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)
 
 A small set of effects and useful functions for [p5.js](https://p5js.org/ "p5.js"),
-a JavaScript library for creative coding. The collection is written in a way that it can
+a JavaScript library for creative coding.
+
+## Ideas behind this
+This is a personal toolkit that I share with you. Feel free to use it in any way,
+shape or form you can imagine. It's written around the idea of using graphics buffers
+within your p5 sketch. A graphics buffer can be created with ``createGraphics(w, h, [renderer])``.
+When called, this function returns a ``p5.Graphics: offsscreen graphics buffer``.
+
+## The structure
+
+## A few eexamples
+The collection is written in a way that it can
 be used in 2D and WBGL sketched. Mostly I am targeting people who like to bump up their
 sketches and post process them a bit. It is still in develpoment and methods will be added.
-``` WARNING - do use not use this for professional projects - :D ```
 ![matthias-jaeger-net](cover.png)
 
 ## Basic usage
+**index.html**
 ```html
-  <!-- Include in index.html before -->
-  <script src="https://cdn.jsdelivr.net/gh/matthias-jaeger-net/p5-toolkit@6e50c96c118203d0b43bbb33b8b406712ae7db14/dist/p5-global-effects.min.js"></script>
+  <!-- Included in your index.html before the sketch -->
+  <script src="p5-global-effects.min.js" defer></script>
+  <script src="sketch.js" defer></script>
 ```
+**sketch.js**
 ```javascript
-// Recommended:
-// Import the effects globally inside of setup() and keep all there
 function setup() {
   const effects = new Effects(this);
-  ...
-}
-
-// Or use a global variable
-let effects;
-function setup() {
-  effects = new Effects(this);
   ...
 }
 ```

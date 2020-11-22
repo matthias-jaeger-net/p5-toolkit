@@ -61,58 +61,105 @@ function setup() {
   image(effects.mosaic(design), 0, 0);
 }
 ```
-### Additional features to highlight
-**Textures (Under construction)**
-```javascript
-// TODO textures
-
-// Scaler
-const sx = 100, sy = 100;
-
-// Dots
-image(effects.dotsRandom(width, height, sx, sy), 0, 0);
-
-// Stripes
-image(effects.stripes(width, height, sx, sy), 0, 0);
-image(effects.stripesRandom(width, height, sx, sy), 0, 0);
-image(effects.stripesXRandom(width, height, sx, sy), 0, 0);
-image(effects.stripesYRandom(width, height, sx, sy), 0, 0);
-
-// Grids
-image(effects.gridDots(width, height, sx, sy), 0, 0);
-image(effects.gridRects(width, height, sx, sy), 0, 0);
-```
-
-
 ## All available Methods
 
-### RANDOM NUMBER TOOLS
-- ```randomOffset(val, off)``` A value with random positive or negative offset
-- ```randomZeroOne()``` A random number between 0 and 1
-- ```randomProb()``` True with a 50% percent probability
-- ```givenProb(prob)``` True/false by given probability
-- ```fuzzyValue(val)``` Either a slightly changed or dramtically reduced value
+### Color tools
+-[x] ```randomColor()``` Any possible color
+-[x] ```randomBrightColor()``` A brighter color
+-[x] ```randomDarkColor()``` A darker color
+-[x] ```shadedColor(col)``` A randomly changed color with low offset
+-[x] ```shadedColorOff(col, off)``` A randomly changed color and public offset
+-[x] ```randomPalette(col, len)``` A color palette with a number of colors and a initial color
+-[x] ```relatedPalette(col, len)``` A color palette with colors based on the initial color
 
-### COLOR TOOLS
-- ```randomColor()``` Any possible color
-- ```randomPastelColor()``` A brighter color
-- ```randomDarkColor()``` A darker color
-- ```shadedColor(col)``` A randomly changed color with low offset
-- ```shadedColorOff(col, off)``` A randomly changed color and public offset
+**Color tools (Under construction)**
+```javascript
+function setup() {
+  // Import the effects class
+  const effects = new Effects(this);
+  // Use it to create a color scheme
+  const  = effects.randomBrightColor();
+  const themeBrightVariant = effects.shadedColor(themeBright);
+  const themeDark = effects.randomDarkColor();
+  const themeAccent = effects.randomColor();
 
-### COLOR PALETTES
-- ```randomPalette(col, len)``` A color palette with a number of colors and a initial color
-- ```relatedPalette(col, len)``` A color palette with colors based on the initial color
+  ...
+  // Or use the ready mades
+  // This will make an array with the inital color and 4 random colors
+  const pal1 = effects.randomPalette(color(200, 10, 20), 5);
+  // This will make an array with the inital color and 4 similar random colors
+  const pal2 = effects.relatedPalette(color(200, 10, 20), 5);
+}
 
-### TEXTURE GENERATORS
-- ```stripes(res, colors)``` A randomly striped graphics buffer
--  ```dots(res, colors)```  A randomly dotted graphics buffer
+```
 
  ### PIXEL EFFECTS
 - ```randomBlurX(buffer) ``` A graphics buffer with dramatically changed colors
 - ```fuzzyBlurX(buffer)``` A graphics buffer with dramatically changed colors
 - ```mosaic(buffer)``` A graphics buffer with a tiled tesselation
 - ```shiftedPixels(buffer)``` A graphics buffer with sifted rows of pixels
+- ```sortArea(buffer)``` A graphics buffer with color sorted pixels
+- ```glitch(buffer)``` A graphics buffer a dramatic pixel manipulation effect
+
+
+### TEXTURE GENERATORS
+- ```stripes(res, colors)``` A randomly striped graphics buffer
+-  ```dots(res, colors)```  A randomly dotted graphics buffer
+
+**Textures (Under construction)**
+```javascript
+// Any hatch function will return a graphics buffer
+// Standard pattern:
+// @param {w} width in pixels
+// @param {h} height in pixels
+// @param {d} Number from 0 to 1 is influences the "densitity"
+// effectName(w, h, d)
+// Basic
+image(effects.hatchHorizontal(w, h, d), 0, 0);
+image(effects.hatchVertical(w, h, d), 0, 0);
+image(effects.hatchGrid(w, h, d), 0, 0);
+image(effects.hatchDotGrid(w, h, d), 0, 0);
+image(effects.hatchRandomDots(w, h, d), 0, 0);
+image(effects.hatchRandomLines(w, h, d), 0, 0);
+// Advanced
+image(effects.hatchMaze(w, h, d), 0, 0);
+image(effects.hatchSinusLines(w, h, d), 0, 0);
+image(effects.hatchFlowField(w, h, d), 0, 0);
+```
+
+**Textures (Under construction)**
+```javascript
+// Any hatch function will return a graphics buffer
+// Standard pattern:
+// @param {w} width in pixels
+// @param {h} height in pixels
+// @param {d} Number from 0 to 1 is influences the "densitity"
+// effectName(w, h, d)
+// Basic
+image(effects.hatchHorizontal(w, h, d), 0, 0);
+image(effects.hatchVertical(w, h, d), 0, 0);
+image(effects.hatchGrid(w, h, d), 0, 0);
+image(effects.hatchDotGrid(w, h, d), 0, 0);
+image(effects.hatchRandomDots(w, h, d), 0, 0);
+image(effects.hatchRandomLines(w, h, d), 0, 0);
+// Advanced
+image(effects.hatchMaze(w, h, d), 0, 0);
+image(effects.hatchSinusLines(w, h, d), 0, 0);
+image(effects.hatchFlowField(w, h, d), 0, 0);
+```
+
+
+### Random number tools
+- ```randomOffset(val, off)``` A value with random positive or negative offset
+- ```randomZeroOne()``` A random number between 0 and 1
+- ```randomProb()``` True with a 50% percent probability
+- ```givenProb(prob)``` True/false by given probability
+- ```fuzzyValue(val)``` Either a slightly changed or dramtically reduced value
+
+
+
+
+
 
 ### LIGHT EFFECTS
 - ```randomLight(buffer)```  Sets a white light in a random position in a buffer

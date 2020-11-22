@@ -81,15 +81,14 @@ function setup() {
   const themeBrightVariant = effects.shadedColor(themeBright);
   const themeDark = effects.randomDarkColor();
   const themeAccent = effects.randomColor()
-  ...
+  // ...
   // Or use the ready mades
   // This will make an array with the inital color and 4 random colors
   const pal1 = effects.randomPalette(color(200, 10, 20), 5);
   // This will make an array with the inital color and 4 similar random colors
   const pal2 = effects.relatedPalette(color(200, 10, 20), 5);
-  ...
+  // ...
 }
-
 ```
 
  ## Pixel effects

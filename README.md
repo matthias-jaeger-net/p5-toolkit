@@ -114,6 +114,20 @@ function setup() {
 - [ ] ```hatchSinusLines(w, h, d)```
 - [ ] ```hatchFlowField(w, h, d)```
 
+**Hatche example**
+![matthias-jaeger-net-hatches-demo](hatches-demo.jpg)
+```javascript
+function setup() {
+  createCanvas(800, 600);
+  background(255);
+
+  const effects = new Effects(this);
+  image(effects.hatchHorizontal(width, height, 0.01), 0, 0);
+  image(effects.hatchVertical(width, height, 0.1), 0, 0);
+  save('hatches-demo.jpg');
+}
+```
+
 ```javascript
 // Any hatch function will return a graphics buffer
 // Standard pattern:

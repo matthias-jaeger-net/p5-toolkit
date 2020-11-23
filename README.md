@@ -25,6 +25,7 @@ It works just like in a regular sketch. With the ``image(img, x, y)`` function w
 offscreen buffer back onto the stage.
 
 #### Work with your custom buffers
+![matthias-jaeger-net-buffer-demo](buffer-demo.jpg)
 ```javascript
 function setup() {
   // Import the effects class
@@ -35,10 +36,13 @@ function setup() {
 
   // Create a 2d buffer with a design
   const design = createGraphics(width, height);
-  design.circle(400, 300, 100);
+  design.circle(400, 200, 300);
 
   // Render the design with an effect
   image(effects.mosaic(design), 0, 0);
+
+  // Render file
+  save('buffer-demo.jpg')
 }
 ```
 

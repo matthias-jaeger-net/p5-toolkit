@@ -50,28 +50,18 @@ function setup() {
 ![matthias-jaeger-net-any-demo](any-demo.jpg)
 ```javascript
 // https://p5js.org/examples/structure-functions.html
-
-// Added as a variable
-let effects;
-
 function setup() {
   createCanvas(720, 400);
   background(51);
   noStroke();
-  noLoop();
-}
-
-function draw() {
   drawTarget(width * 0.25, height * 0.4, 200, 4);
   drawTarget(width * 0.5, height * 0.5, 300, 10);
   drawTarget(width * 0.75, height * 0.3, 120, 6);
 
-  // Added the effects
-  effects = new Effects(this);
+  // Added code
+  const effects = new Effects(this);
   let design = get();
-  clear();
-  design = effects.glitchY(design);
-  image(design, 0, 0);
+  image(effects.mosaic(design), 0, 0);
   save('any-demo.jpg');
 }
 

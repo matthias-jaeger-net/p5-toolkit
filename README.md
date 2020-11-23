@@ -102,7 +102,7 @@ function setup() {
 - [ ] ```huePalette(col, len)``` A color palette with evenly spread hue based the initial color
 
 ### Color tools in use
-![matthias-jaeger-net-webgl-demo](webgl-demo.jpg)
+![matthias-jaeger-net-color-demo](color-demo.jpg)
 ```javascript
 function setup() {
   createCanvas(800, 400);

@@ -153,9 +153,8 @@ class Effects {
 
   hatchGrid(w, h, d) {
     const gfx = this.context.createGraphics(w, h);
-    const scl = this.context.min(w, h) * d;
-    gfx.image(this.hatchHorizontal(w, h, scl), 0, 0);
-    gfx.image(this.hatchVertical(w, h, scl), 0, 0);
+    gfx.image(this.hatchHorizontal(w, h, d), 0, 0);
+    gfx.image(this.hatchVertical(w, h, d), 0, 0);
     return gfx;
   }
 

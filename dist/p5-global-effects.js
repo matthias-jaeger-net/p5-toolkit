@@ -151,6 +151,13 @@ class Effects {
     return gfx;
   }
 
+  hatchGrid(w, h, d) {
+    const gfx = this.context.createGraphics(w, h);
+    gfx.image(this.hatchHorizontal(w, h, d));
+    gfx.image(this.hatchVertical(w, h, d));
+    return gfx;
+  }
+
   /** PIXEL EFFECTS */
 
   // Returns a graphics buffer with dramatically changed colors

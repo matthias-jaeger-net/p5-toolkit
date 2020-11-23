@@ -104,8 +104,8 @@ function setup() {
 ## Hatches
 - [x] ```stripes(res, colors)``` A randomly striped graphics buffer
 - [x] ```dots(res, colors)```  A randomly dotted graphics buffer
-- [ ] ```hatchHorizontal(w, h, d)```
-- [ ] ```hatchVertical(w, h, d)```
+- [x] ```hatchHorizontal(w, h, d)```
+- [x] ```hatchVertical(w, h, d)```
 - [ ] ```hatchGrid(w, h, d)```
 - [ ] ```hatchDotGrid(w, h, d)```
 - [ ] ```hatchRandomDots(w, h, d)```
@@ -114,7 +114,7 @@ function setup() {
 - [ ] ```hatchSinusLines(w, h, d)```
 - [ ] ```hatchFlowField(w, h, d)```
 
-**Hatche example**
+### Hatches example
 ![matthias-jaeger-net-hatches-demo](hatches-demo.jpg)
 ```javascript
 function setup() {

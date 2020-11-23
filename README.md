@@ -47,20 +47,41 @@ function setup() {
 ```
 
 #### Import the effects in any sketch
+![matthias-jaeger-net-any-demo](any-demo.jpg)
 ```javascript
+// https://p5js.org/examples/structure-functions.html
+
+// Added as a variable
+let effects;
+
 function setup() {
-  // Import the effects class
-  const effects = new Effects(this);
+  createCanvas(720, 400);
+  background(51);
+  noStroke();
+  noLoop();
+}
 
-  // Your design in global mode ...
-  createCanvas(800, 400);
-  circle(400, 300, 100);
+function draw() {
+  drawTarget(width * 0.25, height * 0.4, 200, 4);
+  drawTarget(width * 0.5, height * 0.5, 300, 10);
+  drawTarget(width * 0.75, height * 0.3, 120, 6);
 
-  // When called with no arguments get() returns the currrent buffer
-  const design = get();
+  // Added the effects
+  effects = new Effects(this);
+  let design = get();
+  clear();
+  design = effects.glitchY(design);
+  image(design, 0, 0);
+  save('any-demo.jpg');
+}
 
-  // Render the design with an effect
-  image(effects.mosaic(design), 0, 0);
+function drawTarget(xloc, yloc, size, num) {
+  const grayvalues = 255 / num;
+  const steps = size / num;
+  for (let i = 0; i < num; i++) {
+    fill(i * grayvalues);
+    ellipse(xloc, yloc, size - i * steps, size - i * steps);
+  }
 }
 ```
 

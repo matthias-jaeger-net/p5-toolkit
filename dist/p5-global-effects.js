@@ -36,7 +36,7 @@ class Effects {
 
   // Returns a either a slightly changed or dramtically reduced value
   fuzzyValue(val) {
-    return (this.randomProb() ? this.randomOffset(val, 10.0) : this.random(val));
+    return (this.randomProb() ? this.randomOffset(val, 10.0) : this.context.random(val));
   }
 
   /** COLOR TOOLS */

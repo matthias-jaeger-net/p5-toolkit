@@ -10,7 +10,6 @@ shape or form you can imagine. The toolkit (currrently in development) is a sing
 JavaScript class you could add to any of your sketches and use it to post process
 the results. See the examples below how you might include it.
 
-**index.html**
 ```html
   <!-- Included in your index.html before the sketch -->
   <script src="p5-global-effects.min.js" defer></script>
@@ -60,6 +59,7 @@ function setup() {
   image(effects.mosaic(design), 0, 0);
 }
 ```
+
 # All available Methods
 
 ## Color tools
@@ -91,7 +91,10 @@ function setup() {
 }
 ```
 
- ## Pixel effects
+## Pixel effects
+![matthias-jaeger-net-1](cover.png)
+
+### Available functions
 - [x] ```randomBlurX(buffer) ``` A graphics buffer with dramatically changed colors
 - [x] ```fuzzyBlurX(buffer)``` A graphics buffer with dramatically changed colors
 - [x] ```mosaic(buffer)``` A graphics buffer with a tiled tesselation
@@ -99,9 +102,36 @@ function setup() {
 - [x] ```sortColors(buffer)``` A graphics buffer with color sorted pixels
 - [x] ```glitch(buffer)``` A graphics buffer a dramatic pixel manipulation effect
 
-![matthias-jaeger-net-1](cover.png)
+**A custom buffer**
+```javascript
+function setup() {
+  const effects = new Effects(this);
+  createCanvas(800, 600);
+
+  const design = createGraphics(width, height);
+  design.circle(400, 300, 100);
+
+  // Render the design with an effect
+  image(effects.mosaic(design), 0, 0);
+}
+```
 
 ## Hatches
+![matthias-jaeger-net-hatches-demo](hatches-demo.jpg)
+
+### Example
+```javascript
+function setup() {
+  createCanvas(800, 600);
+  background(255);
+
+  const effects = new Effects(this);
+  image(effects.hatchHorizontal(width, height, 0.01), 0, 0);
+  image(effects.hatchVertical(width, height, 0.1), 0, 0);
+  save('hatches-demo.jpg');
+}
+```
+### Available functions
 - [x] ```stripes(res, colors)``` A randomly striped graphics buffer
 - [x] ```dots(res, colors)```  A randomly dotted graphics buffer
 - [x] ```hatchHorizontal(w, h, d)```
@@ -114,45 +144,11 @@ function setup() {
 - [ ] ```hatchSinusLines(w, h, d)```
 - [ ] ```hatchFlowField(w, h, d)```
 
-### Hatches example
-![matthias-jaeger-net-hatches-demo](hatches-demo.jpg)
-```javascript
-function setup() {
-  createCanvas(800, 600);
-  background(255);
-
-  const effects = new Effects(this);
-  image(effects.hatchHorizontal(width, height, 0.01), 0, 0);
-  image(effects.hatchVertical(width, height, 0.1), 0, 0);
-  save('hatches-demo.jpg');
-}
-```
-
-```javascript
-// Any hatch function will return a graphics buffer
-// Standard pattern:
-// @param {w} width in pixels
-// @param {h} height in pixels
-// @param {d} Number from 0 to 1 is influences the "densitity"
-// effectName(w, h, d)
-
-// Basic
-image(effects.hatchHorizontal(w, h, d), 0, 0);
-image(effects.hatchVertical(w, h, d), 0, 0);
-image(effects.hatchGrid(w, h, d), 0, 0);
-image(effects.hatchDotGrid(w, h, d), 0, 0);
-image(effects.hatchRandomDots(w, h, d), 0, 0);
-image(effects.hatchRandomLines(w, h, d), 0, 0);
-
-// Advanced
-image(effects.hatchMaze(w, h, d), 0, 0);
-image(effects.hatchSinusLines(w, h, d), 0, 0);
-image(effects.hatchFlowField(w, h, d), 0, 0);
-```
 
 ## Masking effects
 - ```grainMask(buffer, prob)``` A buffer with a grainy alpha mask
 - ```linesMask(buffer, prob)``` A buffer with a striped alpha mask
+
 ```javascript
 // Currently
 const final1 = effects.grainMask(design, d)

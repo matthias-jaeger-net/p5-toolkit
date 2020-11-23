@@ -24,14 +24,14 @@ other then a p5 sketch. You can use it's name with the dot syntax and draw anyth
 It works just like in a regular sketch. With the ``image(img, x, y)`` function we can render any
 offscreen buffer back onto the stage.
 
-**A custom buffer**
+#### Work with your custom buffers
 ```javascript
 function setup() {
   // Import the effects class
   const effects = new Effects(this);
 
   // Create the canvas 2d context
-  createCanvas(800, 600);
+  createCanvas(800, 400);
 
   // Create a 2d buffer with a design
   const design = createGraphics(width, height);
@@ -42,14 +42,14 @@ function setup() {
 }
 ```
 
-**Getting any buffer**
+#### Import the effects in any sketch
 ```javascript
 function setup() {
   // Import the effects class
   const effects = new Effects(this);
 
   // Your design in global mode ...
-  createCanvas(800, 600);
+  createCanvas(800, 400);
   circle(400, 300, 100);
 
   // When called with no arguments get() returns the currrent buffer
@@ -59,6 +59,23 @@ function setup() {
   image(effects.mosaic(design), 0, 0);
 }
 ```
+
+#### Even WEBGL sketches work fine
+![matthias-jaeger-net-webgl-demo](webgl-demo.jpg)
+
+```javascript
+function setup() {
+  const effects = new Effects(this);
+  createCanvas(800, 400, WEBGL);
+  lights();
+  sphere(150);
+  const design = get();
+  clear();
+  image(effects.glitchY(design), -400, -200);
+  save('webgl-demo.jpg');
+}
+```
+
 
 # All available Methods
 

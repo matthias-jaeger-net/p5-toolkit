@@ -55,7 +55,7 @@ class Effects {
   }
 
   // Returns a random color that is bright
-  randomPastelColor() {
+  randomBrightColor() {
     return this.randomShaped(155, 255);
   }
 

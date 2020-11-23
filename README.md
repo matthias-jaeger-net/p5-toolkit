@@ -25,7 +25,7 @@ It works just like in a regular sketch. With the ``image(img, x, y)`` function w
 offscreen buffer back onto the stage.
 
 #### Work with your custom buffers
-![matthias-jaeger-net-buffer-demo](buffer-demo.jpg)
+![matthias-jaeger-net-buffer-demo](buffer-demo-2.jpg)
 ```javascript
 function setup() {
   // Import the effects class

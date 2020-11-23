@@ -5,10 +5,8 @@ A small set of effects and useful functions for [p5.js](https://p5js.org/ "p5.js
 a JavaScript library for creative coding.
 
 ## A personal toolkit for creating static images with p5
-This is a personal toolkit that I share with you. Feel free to use it in any way,
-shape or form you can imagine. The toolkit (currrently in development) is a single
-JavaScript class you could add to any of your sketches and use it to post process
-the results. See the examples below how you might include it.
+The toolkit (currently in development) is a single JavaScript class you could add
+to any of your sketches and use it to post process the results.
 
 ```html
   <!-- Included in your index.html before the sketch -->
@@ -91,7 +89,6 @@ function setup() {
 }
 ```
 
-
 # All available Methods
 
 ## Color tools
@@ -104,29 +101,44 @@ function setup() {
 - [x] ```relatedPalette(col, len)``` A color palette with colors based on the initial color
 - [ ] ```huePalette(col, len)``` A color palette with evenly spread hue based the initial color
 
+### Color tools in use
+![matthias-jaeger-net-webgl-demo](webgl-demo.jpg)
 ```javascript
 function setup() {
-  // Import the effects class
+  createCanvas(800, 400);
+
+  // Generate random colors
   const effects = new Effects(this);
-  // Use it to create a color scheme
   const themeBright = effects.randomBrightColor();
-  const themeBrightVariant = effects.shadedColor(themeBright);
   const themeDark = effects.randomDarkColor();
-  const themeAccent = effects.randomColor()
-  // ...
-  // Or use the ready mades
-  // This will make an array with the inital color and 4 random colors
-  const pal1 = effects.randomPalette(color(200, 10, 20), 5);
-  // This will make an array with the inital color and 4 similar random colors
-  const pal2 = effects.relatedPalette(color(200, 10, 20), 5);
-  // ...
+  const themeAccent = effects.randomColor();
+  const colors = [themeBright, themeDark, themeAccent];
+
+  // Use colors in effects or within the sketch
+  image(effects.stripes(width, colors), 0, 0);
+
+  // Frame
+  noFill();
+  strokeWeight(40);
+  stroke(themeBright);
+  rect(0, 0, width, height);
+
+  // Swatches
+  noStroke();
+  fill(themeBright);
+  rect(600, 50, 150, 80);
+  fill(themeDark);
+  rect(600, 150, 150, 80);
+  fill(themeAccent);
+  rect(600, 250, 150, 80);
+
+  save('color-demo.jpg');
 }
 ```
-
 ## Pixel effects
 ![matthias-jaeger-net-1](cover.png)
 
-### Available functions
+### Available effects
 - [x] ```randomBlurX(buffer) ``` A graphics buffer with dramatically changed colors
 - [x] ```fuzzyBlurX(buffer)``` A graphics buffer with dramatically changed colors
 - [x] ```mosaic(buffer)``` A graphics buffer with a tiled tesselation

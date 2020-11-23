@@ -165,8 +165,8 @@ class Effects {
     const gfx = this.context.createGraphics(buffer.width, buffer.height);
     const bufferPixels = buffer.get();
     gfx.loadPixels();
-    for (let y = 0; y < buffer.width; y += 1) {
-      for (let x = 0; x < buffer.height; x += 1) {
+    for (let y = 0; y < buffer.height; y += 1) {
+      for (let x = 0; x < buffer.width; x += 1) {
         const offX = this.context.floor(this.context.random(x));
         const col = bufferPixels.get(offX, y);
         gfx.set(x, y, col);

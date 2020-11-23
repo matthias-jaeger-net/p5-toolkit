@@ -132,6 +132,25 @@ class Effects {
     return gfx;
   }
 
+  /** Hatches */
+  hatchHorizontal(w, h, d) {
+    const gfx = this.context.createGraphics(w, h);
+    const scl = gfx.height * d;
+    for (let y = 0; y < gfx.height; y += scl) {
+      gfx.line(0, y, gfx.width, y);
+    }
+    return gfx;
+  }
+
+  hatchVertical(w, h, d) {
+    const gfx = this.context.createGraphics(w, h);
+    const scl = gfx.width * d;
+    for (let x = 0; x < gfx.width; x += scl) {
+      gfx.line(x, 0, x, gfx.height);
+    }
+    return gfx;
+  }
+
   /** PIXEL EFFECTS */
 
   // Returns a graphics buffer with dramatically changed colors

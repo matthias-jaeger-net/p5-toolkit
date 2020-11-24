@@ -1,14 +1,15 @@
 # A simple toolkit for generating powerful and visually strong [p5.js](https://p5js.org/ "p5.js") sketches.
-
-### This toolkit is a single file JavaScript class you could add to any of your sketches and use it's methods to post process the results. It is a personal collection of useful functions I wrote over a longer periood of time. the
 ![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)
+### This toolkit is a single file JavaScript class called ```Effects(context)```. You can add it to any of your sketches and use it's methods to post process the results. It is a personal collection of useful functions I wrote over a longer period of time. The core are the pixel effects, but it also offers random number tools, random color tools, masks and much more..
 
 
+```html
+  <!-- Download and include in your index.html before the sketch.js -->
+  <script src="p5-global-effects.min.js" defer></script>
+  <script src="sketch.js" defer></script>
+```
+[Download the latest Version](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.js), [Download the minified Version](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.min.js)
 
-[Download the latest Version (Uncompressed](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.js)
-[Download the minified Version](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.min.js)
-
-# How to use it?
 
 ![matthias-jaeger-net-buffer-demo](cover-demo.png)
 

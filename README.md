@@ -1,27 +1,45 @@
 # p5-toolkit
 ![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)
 
-Useful functions for [p5.js](https://p5js.org/ "p5.js") a JavaScript library for creative coding.
+# A toolkit for post-processing and generating  simple [p5.js](https://p5js.org/ "p5.js") sketches
+### The toolkit is a single JavaScript class you could add to any of your sketches and use it's methods to post process the results.
 
-## A personal toolkit for creating static images with p5
-The toolkit (currently in development) is a single JavaScript class you could add
-to any of your sketches and use it to post process the results.
+[Download the latest Version (Uncompressed](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.js)
+[Download the minified Version](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.min.js)
 
-```html
-  <!-- Included in your index.html before the sketch -->
-  <script src="p5-global-effects.min.js" defer></script>
-  <script src="sketch.js" defer></script>
+# How to use it?
+
+![matthias-jaeger-net-buffer-demo](cover-demo.png)
+
+```javascript
+// This cover image for example shows a variety of uses
+function setup() {
+  createCanvas(800, 400);
+  const effects = new Effects(this);
+  const theme = effects.randomColor();
+  const dark = effects.randomDarkColor();
+  image(effects.dots(width, ['#000000', '#FFFFFF', dark]), 0, 0);
+  image(effects.hatchVertical(width, height, 0.01), 0, 0);
+  image(effects.hatchHorizontal(width, height, 0.3), 0, 0);
+  textAlign(CENTER, CENTER);
+  textSize(100);
+  strokeWeight(41);
+  fill(theme);
+  stroke(dark);
+  text('p5-global-tools', 400, 200);
+  const gltch = get();
+  image(effects.glitchY(gltch), 0, 0);
+  fill(255);
+  noStroke();
+  text('p5-global-tools', 402, 202);
+  save('cover-demo.png');
+}
 ```
 
-### Using graphics buffers
-The class is written around the idea of using graphics buffers within your p5 sketch.
-A graphics buffer can be created with ``createGraphics(w, h, [renderer])``.
-When called, this function returns a ``p5.Graphics: offsscreen graphics buffer``, which is nothing
-other then a p5 sketch. You can use it's name with the dot syntax and draw anything into the buffer.
-It works just like in a regular sketch. With the ``image(img, x, y)`` function we can render any
-offscreen buffer back onto the stage.
+# Using graphics buffers
+### The class is written around the idea of using graphics buffers within your p5 sketch. A graphics buffer can be created with ``createGraphics(w, h, [renderer])``. When called, this function returns a ``p5.Graphics: offsscreen graphics buffer``, which is nothing other then a p5 sketch. You can use it's name with the dot syntax and draw anything into the buffer. It works just like in a regular sketch. With the ``image(img, x, y)`` function we can render any offscreen buffer back onto the stage.
 
-#### Work with your custom buffers
+## Work with your custom buffers
 ![matthias-jaeger-net-buffer-demo](buffer-demo-2.jpg)
 ```javascript
 function setup() {
@@ -43,7 +61,7 @@ function setup() {
 }
 ```
 
-#### Import the effects in any sketch
+## Import the effects in any sketch
 ![matthias-jaeger-net-any-demo](any-demo.jpg)
 ```javascript
 // https://p5js.org/examples/structure-functions.html
@@ -72,7 +90,7 @@ function drawTarget(xloc, yloc, size, num) {
 }
 ```
 
-#### Even WEBGL sketches work fine
+## Even WEBGL sketches work fine
 ![matthias-jaeger-net-webgl-demo](webgl-demo.jpg)
 
 ```javascript
@@ -145,20 +163,6 @@ function setup() {
 - [x] ```sortColors(buffer)``` A graphics buffer with color sorted pixels
 - [x] ```glitch(buffer)``` A graphics buffer a dramatic pixel manipulation effect
 
-**A custom buffer**
-```javascript
-function setup() {
-  const effects = new Effects(this);
-  createCanvas(800, 600);
-
-  const design = createGraphics(width, height);
-  design.circle(400, 300, 100);
-
-  // Render the design with an effect
-  image(effects.mosaic(design), 0, 0);
-}
-```
-
 ## Hatches
 ![matthias-jaeger-net-hatches-demo](hatches-demo.jpg)
 
@@ -210,7 +214,7 @@ const final2 = effects.linesMask(design, d)
 - ```randomColoredLight(buffer, col)``` Sets a colored light in a random position in a buffer
 
 
-# A few examples
+# A few old examples
 
 ![matthias-jaeger-net-2](canvas.png)
 

@@ -1,8 +1,7 @@
 # p5-toolkit
 ![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)
 
-A small set of effects and useful functions for [p5.js](https://p5js.org/ "p5.js"),
-a JavaScript library for creative coding.
+Useful functions for [p5.js](https://p5js.org/ "p5.js") a JavaScript library for creative coding.
 
 ## A personal toolkit for creating static images with p5
 The toolkit (currently in development) is a single JavaScript class you could add

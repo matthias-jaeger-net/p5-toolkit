@@ -36,7 +36,7 @@ class Effects {
 
   // Returns a either a slightly changed or dramtically reduced value
   fuzzyValue(val) {
-    return (this.randomProb() ? this.randomOffset(val, 10.0) : this.random(val));
+    return (this.randomProb() ? this.randomOffset(val, 10.0) : this.context.random(val));
   }
 
   /** COLOR TOOLS */
@@ -55,7 +55,7 @@ class Effects {
   }
 
   // Returns a random color that is bright
-  randomPastelColor() {
+  randomBrightColor() {
     return this.randomShaped(155, 255);
   }
 
@@ -151,6 +151,13 @@ class Effects {
     return gfx;
   }
 
+  hatchGrid(w, h, d) {
+    const gfx = this.context.createGraphics(w, h);
+    gfx.image(this.hatchHorizontal(w, h, d), 0, 0);
+    gfx.image(this.hatchVertical(w, h, d), 0, 0);
+    return gfx;
+  }
+
   /** PIXEL EFFECTS */
 
   // Returns a graphics buffer with dramatically changed colors
@@ -158,8 +165,8 @@ class Effects {
     const gfx = this.context.createGraphics(buffer.width, buffer.height);
     const bufferPixels = buffer.get();
     gfx.loadPixels();
-    for (let y = 0; y < buffer.width; y += 1) {
-      for (let x = 0; x < buffer.height; x += 1) {
+    for (let y = 0; y < buffer.height; y += 1) {
+      for (let x = 0; x < buffer.width; x += 1) {
         const offX = this.context.floor(this.context.random(x));
         const col = bufferPixels.get(offX, y);
         gfx.set(x, y, col);

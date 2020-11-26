@@ -1,65 +1,113 @@
-# p5-toolkit
+# A simple toolkit for generating powerful and visually strong [p5.js](https://p5js.org/ "p5.js") sketches.
 ![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)
+### This toolkit is a single file JavaScript class called ```Effects(context)```. You can add it to any of your sketches and use it's methods to post process the results. It is a personal collection of useful functions I wrote over a longer period of time. The core are the pixel effects, but it also offers random number tools, random color tools, masks and much more..
 
-A small set of effects and useful functions for [p5.js](https://p5js.org/ "p5.js"),
-a JavaScript library for creative coding.
 
-## A personal toolkit for creating static images with p5
-This is a personal toolkit that I share with you. Feel free to use it in any way,
-shape or form you can imagine. The toolkit (currrently in development) is a single
-JavaScript class you could add to any of your sketches and use it to post process
-the results. See the examples below how you might include it.
-
-**index.html**
 ```html
-  <!-- Included in your index.html before the sketch -->
+  <!-- Download and include in your index.html before the sketch.js -->
   <script src="p5-global-effects.min.js" defer></script>
   <script src="sketch.js" defer></script>
 ```
+[Download the latest Version](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.js), [Download the minified Version](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.min.js)
 
-### Using graphics buffers
-The class is written around the idea of using graphics buffers within your p5 sketch.
-A graphics buffer can be created with ``createGraphics(w, h, [renderer])``.
-When called, this function returns a ``p5.Graphics: offsscreen graphics buffer``, which is nothing
-other then a p5 sketch. You can use it's name with the dot syntax and draw anything into the buffer.
-It works just like in a regular sketch. With the ``image(img, x, y)`` function we can render any
-offscreen buffer back onto the stage.
 
-**A custom buffer**
+![matthias-jaeger-net-buffer-demo](cover-demo.png)
+
+```javascript
+// This cover image for example shows a variety of uses
+function setup() {
+  createCanvas(800, 400);
+  const effects = new Effects(this);
+  const theme = effects.randomColor();
+  const dark = effects.randomDarkColor();
+  image(effects.dots(width, ['#000000', '#FFFFFF', dark]), 0, 0);
+  image(effects.hatchVertical(width, height, 0.01), 0, 0);
+  image(effects.hatchHorizontal(width, height, 0.3), 0, 0);
+  textAlign(CENTER, CENTER);
+  textSize(100);
+  strokeWeight(41);
+  fill(theme);
+  stroke(dark);
+  text('p5-global-tools', 400, 200);
+  const gltch = get();
+  image(effects.glitchY(gltch), 0, 0);
+  fill(255);
+  noStroke();
+  text('p5-global-tools', 402, 202);
+  save('cover-demo.png');
+}
+```
+
+# Using graphics buffers
+### The class is written around the idea of using graphics buffers within your p5 sketch. A graphics buffer can be created with ``createGraphics(w, h, [renderer])``. When called, this function returns a ``p5.Graphics: offsscreen graphics buffer``, which is nothing other then a p5 sketch. You can use it's name with the dot syntax and draw anything into the buffer. It works just like in a regular sketch. With the ``image(img, x, y)`` function we can render any offscreen buffer back onto the stage.
+
+## Work with your custom buffers
+![matthias-jaeger-net-buffer-demo](buffer-demo-2.jpg)
 ```javascript
 function setup() {
   // Import the effects class
   const effects = new Effects(this);
 
   // Create the canvas 2d context
-  createCanvas(800, 600);
+  createCanvas(800, 400);
 
   // Create a 2d buffer with a design
   const design = createGraphics(width, height);
-  design.circle(400, 300, 100);
+  design.circle(400, 200, 300);
 
   // Render the design with an effect
   image(effects.mosaic(design), 0, 0);
+
+  // Render file
+  save('buffer-demo.jpg')
 }
 ```
 
-**Getting any buffer**
+## Import the effects in any sketch
+![matthias-jaeger-net-any-demo](any-demo.jpg)
+```javascript
+// https://p5js.org/examples/structure-functions.html
+function setup() {
+  createCanvas(720, 400);
+  background(51);
+  noStroke();
+  drawTarget(width * 0.25, height * 0.4, 200, 4);
+  drawTarget(width * 0.5, height * 0.5, 300, 10);
+  drawTarget(width * 0.75, height * 0.3, 120, 6);
+
+  // Added code
+  const effects = new Effects(this);
+  let design = get();
+  image(effects.mosaic(design), 0, 0);
+  save('any-demo.jpg');
+}
+
+function drawTarget(xloc, yloc, size, num) {
+  const grayvalues = 255 / num;
+  const steps = size / num;
+  for (let i = 0; i < num; i++) {
+    fill(i * grayvalues);
+    ellipse(xloc, yloc, size - i * steps, size - i * steps);
+  }
+}
+```
+
+## Even WEBGL sketches work fine
+![matthias-jaeger-net-webgl-demo](webgl-demo.jpg)
+
 ```javascript
 function setup() {
-  // Import the effects class
   const effects = new Effects(this);
-
-  // Your design in global mode ...
-  createCanvas(800, 600);
-  circle(400, 300, 100);
-
-  // When called with no arguments get() returns the currrent buffer
+  createCanvas(800, 400, WEBGL);
+  lights();
+  sphere(150);
   const design = get();
-
-  // Render the design with an effect
-  image(effects.mosaic(design), 0, 0);
+  clear();
+  image(effects.glitchY(design), -400, -200);
+  save('webgl-demo.jpg');
 }
 ```
+
 # All available Methods
 
 ## Color tools
@@ -72,26 +120,44 @@ function setup() {
 - [x] ```relatedPalette(col, len)``` A color palette with colors based on the initial color
 - [ ] ```huePalette(col, len)``` A color palette with evenly spread hue based the initial color
 
+### Color tools in use
+![matthias-jaeger-net-color-demo](color-demo.jpg)
 ```javascript
 function setup() {
-  // Import the effects class
+  createCanvas(800, 400);
+
+  // Generate random colors
   const effects = new Effects(this);
-  // Use it to create a color scheme
   const themeBright = effects.randomBrightColor();
-  const themeBrightVariant = effects.shadedColor(themeBright);
   const themeDark = effects.randomDarkColor();
-  const themeAccent = effects.randomColor()
-  // ...
-  // Or use the ready mades
-  // This will make an array with the inital color and 4 random colors
-  const pal1 = effects.randomPalette(color(200, 10, 20), 5);
-  // This will make an array with the inital color and 4 similar random colors
-  const pal2 = effects.relatedPalette(color(200, 10, 20), 5);
-  // ...
+  const themeAccent = effects.randomColor();
+  const colors = [themeBright, themeDark, themeAccent];
+
+  // Use colors in effects or within the sketch
+  image(effects.stripes(width, colors), 0, 0);
+
+  // Frame
+  noFill();
+  strokeWeight(40);
+  stroke(themeBright);
+  rect(0, 0, width, height);
+
+  // Swatches
+  noStroke();
+  fill(themeBright);
+  rect(600, 50, 150, 80);
+  fill(themeDark);
+  rect(600, 150, 150, 80);
+  fill(themeAccent);
+  rect(600, 250, 150, 80);
+
+  save('color-demo.jpg');
 }
 ```
+## Pixel effects
+![matthias-jaeger-net-1](cover.png)
 
- ## Pixel effects
+### Available effects
 - [x] ```randomBlurX(buffer) ``` A graphics buffer with dramatically changed colors
 - [x] ```fuzzyBlurX(buffer)``` A graphics buffer with dramatically changed colors
 - [x] ```mosaic(buffer)``` A graphics buffer with a tiled tesselation
@@ -99,13 +165,26 @@ function setup() {
 - [x] ```sortColors(buffer)``` A graphics buffer with color sorted pixels
 - [x] ```glitch(buffer)``` A graphics buffer a dramatic pixel manipulation effect
 
-![matthias-jaeger-net-1](cover.png)
-
 ## Hatches
+![matthias-jaeger-net-hatches-demo](hatches-demo.jpg)
+
+### Example
+```javascript
+function setup() {
+  createCanvas(800, 600);
+  background(255);
+
+  const effects = new Effects(this);
+  image(effects.hatchHorizontal(width, height, 0.01), 0, 0);
+  image(effects.hatchVertical(width, height, 0.1), 0, 0);
+  save('hatches-demo.jpg');
+}
+```
+### Available functions
 - [x] ```stripes(res, colors)``` A randomly striped graphics buffer
 - [x] ```dots(res, colors)```  A randomly dotted graphics buffer
-- [ ] ```hatchHorizontal(w, h, d)```
-- [ ] ```hatchVertical(w, h, d)```
+- [x] ```hatchHorizontal(w, h, d)```
+- [x] ```hatchVertical(w, h, d)```
 - [ ] ```hatchGrid(w, h, d)```
 - [ ] ```hatchDotGrid(w, h, d)```
 - [ ] ```hatchRandomDots(w, h, d)```
@@ -114,31 +193,11 @@ function setup() {
 - [ ] ```hatchSinusLines(w, h, d)```
 - [ ] ```hatchFlowField(w, h, d)```
 
-```javascript
-// Any hatch function will return a graphics buffer
-// Standard pattern:
-// @param {w} width in pixels
-// @param {h} height in pixels
-// @param {d} Number from 0 to 1 is influences the "densitity"
-// effectName(w, h, d)
-
-// Basic
-image(effects.hatchHorizontal(w, h, d), 0, 0);
-image(effects.hatchVertical(w, h, d), 0, 0);
-image(effects.hatchGrid(w, h, d), 0, 0);
-image(effects.hatchDotGrid(w, h, d), 0, 0);
-image(effects.hatchRandomDots(w, h, d), 0, 0);
-image(effects.hatchRandomLines(w, h, d), 0, 0);
-
-// Advanced
-image(effects.hatchMaze(w, h, d), 0, 0);
-image(effects.hatchSinusLines(w, h, d), 0, 0);
-image(effects.hatchFlowField(w, h, d), 0, 0);
-```
 
 ## Masking effects
 - ```grainMask(buffer, prob)``` A buffer with a grainy alpha mask
 - ```linesMask(buffer, prob)``` A buffer with a striped alpha mask
+
 ```javascript
 // Currently
 const final1 = effects.grainMask(design, d)
@@ -157,7 +216,7 @@ const final2 = effects.linesMask(design, d)
 - ```randomColoredLight(buffer, col)``` Sets a colored light in a random position in a buffer
 
 
-# A few examples
+# A few old examples
 
 ![matthias-jaeger-net-2](canvas.png)
 

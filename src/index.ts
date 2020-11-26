@@ -1,9 +1,7 @@
 import mosaic from './pixel/mosaic';
 
-const Effects = {
+export const Effects = {
   pixel: {
     mosaic,
   },
 };
-
-export default Effects;

@@ -1,7 +1,8 @@
 # A simple toolkit for generating powerful and visually strong [p5.js](https://p5js.org/ "p5.js") sketches.
-![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)
-### This toolkit is a single file JavaScript class called ```Effects(context)```. You can add it to any of your sketches and use it's methods to post process the results. It is a personal collection of useful functions I wrote over a longer period of time. The core are the pixel effects, but it also offers random number tools, random color tools, masks and much more..
 
+![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)
+
+### This toolkit is a single file JavaScript class called ```Effects(context)```. You can add it to any of your sketches and use it's methods to post process the results. It is a personal collection of useful functions I wrote over a longer period of time. The core are the pixel effects, but it also offers random number tools, random color tools, masks and much more..
 
 ```html
   <!-- Download and include in your index.html before the sketch.js -->
@@ -10,8 +11,7 @@
 ```
 [Download the latest Version](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.js), [Download the minified Version](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.min.js)
 
-
-![matthias-jaeger-net-buffer-demo](cover-demo.png)
+![matthias-jaeger-net-buffer-demo](images/cover-demo.png)
 
 ```javascript
 // This cover image for example shows a variety of uses
@@ -42,7 +42,7 @@ function setup() {
 ### The class is written around the idea of using graphics buffers within your p5 sketch. A graphics buffer can be created with ``createGraphics(w, h, [renderer])``. When called, this function returns a ``p5.Graphics: offsscreen graphics buffer``, which is nothing other then a p5 sketch. You can use it's name with the dot syntax and draw anything into the buffer. It works just like in a regular sketch. With the ``image(img, x, y)`` function we can render any offscreen buffer back onto the stage.
 
 ## Work with your custom buffers
-![matthias-jaeger-net-buffer-demo](buffer-demo-2.jpg)
+![matthias-jaeger-net-buffer-demo](images/buffer-demo-2.jpg)
 ```javascript
 function setup() {
   // Import the effects class
@@ -64,7 +64,7 @@ function setup() {
 ```
 
 ## Import the effects in any sketch
-![matthias-jaeger-net-any-demo](any-demo.jpg)
+![matthias-jaeger-net-any-demo](images/any-demo.jpg)
 ```javascript
 // https://p5js.org/examples/structure-functions.html
 function setup() {
@@ -93,7 +93,7 @@ function drawTarget(xloc, yloc, size, num) {
 ```
 
 ## Even WEBGL sketches work fine
-![matthias-jaeger-net-webgl-demo](webgl-demo.jpg)
+![matthias-jaeger-net-webgl-demo](images/webgl-demo.jpg)
 
 ```javascript
 function setup() {
@@ -121,7 +121,7 @@ function setup() {
 - [ ] ```huePalette(col, len)``` A color palette with evenly spread hue based the initial color
 
 ### Color tools in use
-![matthias-jaeger-net-color-demo](color-demo.jpg)
+![matthias-jaeger-net-color-demo](images/color-demo.jpg)
 ```javascript
 function setup() {
   createCanvas(800, 400);
@@ -155,7 +155,7 @@ function setup() {
 }
 ```
 ## Pixel effects
-![matthias-jaeger-net-1](cover.png)
+![matthias-jaeger-net-1](images/cover.png)
 
 ### Available effects
 - [x] ```randomBlurX(buffer) ``` A graphics buffer with dramatically changed colors
@@ -166,7 +166,7 @@ function setup() {
 - [x] ```glitch(buffer)``` A graphics buffer a dramatic pixel manipulation effect
 
 ## Hatches
-![matthias-jaeger-net-hatches-demo](hatches-demo.jpg)
+![matthias-jaeger-net-hatches-demo](images/hatches-demo.jpg)
 
 ### Example
 ```javascript
@@ -218,7 +218,7 @@ const final2 = effects.linesMask(design, d)
 
 # A few old examples
 
-![matthias-jaeger-net-2](canvas.png)
+![matthias-jaeger-net-2](images/canvas.png)
 
 ## Example Basic
 https://editor.p5js.org/matthias-jaeger-net/sketches/PQrZMbk45

@@ -133,19 +133,21 @@ class Effects {
   }
 
   /** Hatches */
-  hatchHorizontal(w, h, d) {
+  hatchHorizontal(w, h, d, col) {
     const gfx = this.context.createGraphics(w, h);
     const scl = gfx.height * d;
     for (let y = 0; y < gfx.height; y += scl) {
+      gfx.stroke(col);
       gfx.line(0, y, gfx.width, y);
     }
     return gfx;
   }
 
-  hatchVertical(w, h, d) {
+  hatchVertical(w, h, d, col) {
     const gfx = this.context.createGraphics(w, h);
     const scl = gfx.width * d;
     for (let x = 0; x < gfx.width; x += scl) {
+      gfx.stroke(col);
       gfx.line(x, 0, x, gfx.height);
     }
     return gfx;

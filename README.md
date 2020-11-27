@@ -1,23 +1,27 @@
-# A simple toolkit for generating powerful and visually strong [p5.js](https://p5js.org/ "p5.js") sketches.
+# p5-global-effects
+![matthias-jaeger-net-buffer-demo](images/cover-demo.png)
+## A single JavaScript file that I use for post processing and visual trickery in the context of [p5 sketches](https://p5js.org/). All of my work here is licenced ![License](https://poser.pugx.org/laravel/lumen-framework/license.svg). So please feel free to use it in any of your sketches. It's an art thing, I wouldn't use it for professional work.
 
-![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)
-
-### This toolkit is a single file JavaScript class called ```Effects(context)```. You can add it to any of your sketches and use it's methods to post process the results. It is a personal collection of useful functions I wrote over a longer period of time. The core are the pixel effects, but it also offers random number tools, random color tools, masks and much more..
+## I strongly recommend to target the [production version](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.js) or include the [minified version](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.min.js) of this file. As this is a personal toolkit, the changes I make to this file are often dramatic, so a fork or clone of the current version might save bugs.
 
 ```html
   <!-- Download and include in your index.html before the sketch.js -->
   <script src="p5-global-effects.min.js" defer></script>
   <script src="sketch.js" defer></script>
 ```
-[Download the latest Version](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.js), [Download the minified Version](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.min.js)
 
-![matthias-jaeger-net-buffer-demo](images/cover-demo.png)
+```javascript
+function setup() {
+  const effects = new Effects(this);
+}
+```
+
+
 
 ```javascript
 // This cover image for example shows a variety of uses
 function setup() {
   createCanvas(800, 400);
-  const effects = new Effects(this);
   const theme = effects.randomColor();
   const dark = effects.randomDarkColor();
   image(effects.dots(width, ['#000000', '#FFFFFF', dark]), 0, 0);

@@ -1,51 +1,30 @@
+# p5-global-effects
+![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)
+
+
+
+### ``Effects``  is a single JavaScript class I use for post processing and visual trickery in the context of my [p5 sketches](https://p5js.org/).
+
 ![matthias-jaeger-net-buffer-demo](images/cover-demo.jpg)
+#### Note: Please feel free to use it in any of your sketches. As this is an "art thing", not a professional piece of work, don't be sad if it doesn't work or suddenly changed :-). changed.
 
-## A JavaScript file that I use for post processing and visual trickery in the context of [p5 sketches](https://p5js.org/). All of my work here is licenced ![License](https://poser.pugx.org/laravel/lumen-framework/license.svg). Please feel free to use it in any of your sketches. It's an art thing, I wouldn't use it for professional work.
-
-## I strongly recommend to use the [production version](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.js) or include the [minified version](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.min.js) of this file. As this is a personal toolkit, the changes I make to this file are often dramatic, so a fork or clone of the current version might save bugs.
-
+### Include the script in ```index.html```
 ```html
-  <!-- Download and include in your index.html before the sketch.js -->
   <script src="p5-global-effects.min.js" defer></script>
   <script src="sketch.js" defer></script>
 ```
-
+### Use it in ```sketch.js```
 ```javascript
 function setup() {
   const effects = new Effects(this);
+  background(effects.randomColor());
 }
 ```
 
+# Check this readme for ideas and inspiration how you could use it  in your own sketches.
+The class is written around the idea of using graphics buffers within your p5 sketch. A graphics buffer can be created with ``createGraphics(w, h, [renderer])``. When called, this function returns a ``p5.Graphics: offsscreen graphics buffer``, which is nothing other then a p5 sketch. You can use it's name with the dot syntax and draw anything into the buffer. It works just like in a regular sketch. With the ``image(img, x, y)`` function we can render any offscreen buffer back onto the stage.
 
-
-```javascript
-// This cover image for example shows a variety of uses
-function setup() {
-  createCanvas(800, 400);
-  const theme = effects.randomColor();
-  const dark = effects.randomDarkColor();
-  image(effects.dots(width, ['#000000', '#FFFFFF', dark]), 0, 0);
-  image(effects.hatchVertical(width, height, 0.01), 0, 0);
-  image(effects.hatchHorizontal(width, height, 0.3), 0, 0);
-  textAlign(CENTER, CENTER);
-  textSize(100);
-  strokeWeight(41);
-  fill(theme);
-  stroke(dark);
-  text('p5-global-tools', 400, 200);
-  const gltch = get();
-  image(effects.glitchY(gltch), 0, 0);
-  fill(255);
-  noStroke();
-  text('p5-global-tools', 402, 202);
-  save('cover-demo.png');
-}
-```
-
-# Using graphics buffers
-### The class is written around the idea of using graphics buffers within your p5 sketch. A graphics buffer can be created with ``createGraphics(w, h, [renderer])``. When called, this function returns a ``p5.Graphics: offsscreen graphics buffer``, which is nothing other then a p5 sketch. You can use it's name with the dot syntax and draw anything into the buffer. It works just like in a regular sketch. With the ``image(img, x, y)`` function we can render any offscreen buffer back onto the stage.
-
-## Work with your custom buffers
+## Working with buffers is my standard approach
 ![matthias-jaeger-net-buffer-demo](images/buffer-demo-2.jpg)
 ```javascript
 function setup() {
@@ -96,7 +75,7 @@ function drawTarget(xloc, yloc, size, num) {
 }
 ```
 
-## Even WEBGL sketches work fine
+## Even WEBGL sketches works fine
 ![matthias-jaeger-net-webgl-demo](images/webgl-demo.jpg)
 
 ```javascript
@@ -113,6 +92,12 @@ function setup() {
 ```
 
 # All available Methods
+## Random number tools
+- ```randomOffset(val, off)``` A value with random positive or negative offset
+- ```randomZeroOne()``` A random number between 0 and 1
+- ```randomProb()``` True with a 50% percent probability
+- ```givenProb(prob)``` True/false by given probability
+- ```fuzzyValue(val)``` Either a slightly changed or dramtically reduced value
 
 ## Color tools
 - [x] ```randomColor()``` Any possible color
@@ -123,6 +108,44 @@ function setup() {
 - [x] ```randomPalette(col, len)``` A color palette with a number of colors and a initial color
 - [x] ```relatedPalette(col, len)``` A color palette with colors based on the initial color
 - [ ] ```huePalette(col, len)``` A color palette with evenly spread hue based the initial color
+
+## Pixel effects
+- [x] ```randomBlurX(buffer) ``` A graphics buffer with dramatically changed colors
+- [x] ```fuzzyBlurX(buffer)``` A graphics buffer with dramatically changed colors
+- [x] ```mosaic(buffer)``` A graphics buffer with a tiled tesselation
+- [x] ```shiftedPixels(buffer)``` A graphics buffer with sifted rows of pixels
+- [x] ```sortColors(buffer)``` A graphics buffer with color sorted pixels
+- [x] ```glitch(buffer)``` A graphics buffer a dramatic pixel manipulation effect
+
+## Hatches
+- [x] ```stripes(res, colors)``` A randomly striped graphics buffer
+- [x] ```dots(res, colors)```  A randomly dotted graphics buffer
+- [x] ```hatchHorizontal(w, h, d)```
+- [x] ```hatchVertical(w, h, d)```
+- [ ] ```hatchGrid(w, h, d)```
+- [ ] ```hatchDotGrid(w, h, d)```
+- [ ] ```hatchRandomDots(w, h, d)```
+- [ ] ```hatchRandomLines(w, h, d)```
+- [ ] ```hatchMaze(w, h, d)```
+- [ ] ```hatchSinusLines(w, h, d)```
+- [ ] ```hatchFlowField(w, h, d)```
+
+## Masking effects
+- [ ] ```grainMask(buffer, prob)``` A buffer with a grainy alpha mask
+- [ ] ```linesMask(buffer, prob)``` A buffer with a striped alpha mask
+
+## WEBGL light effects
+- [ ] ```randomLight(buffer)```  Sets a white light in a random position in a buffer
+- [ ] ```randomColoredLight(buffer, col)``` Sets a colored light in a random position in a buffer
+
+## Typographic effects
+- [ ] ```TODO```
+
+## Blending effects
+- [ ] ```TODO```
+
+
+# Demos and examples
 
 ### Color tools in use
 ![matthias-jaeger-net-color-demo](images/color-demo.jpg)
@@ -158,21 +181,8 @@ function setup() {
   save('color-demo.jpg');
 }
 ```
-## Pixel effects
-![matthias-jaeger-net-1](images/cover.png)
-
-### Available effects
-- [x] ```randomBlurX(buffer) ``` A graphics buffer with dramatically changed colors
-- [x] ```fuzzyBlurX(buffer)``` A graphics buffer with dramatically changed colors
-- [x] ```mosaic(buffer)``` A graphics buffer with a tiled tesselation
-- [x] ```shiftedPixels(buffer)``` A graphics buffer with sifted rows of pixels
-- [x] ```sortColors(buffer)``` A graphics buffer with color sorted pixels
-- [x] ```glitch(buffer)``` A graphics buffer a dramatic pixel manipulation effect
-
 ## Hatches
 ![matthias-jaeger-net-hatches-demo](images/hatches-demo.jpg)
-
-### Example
 ```javascript
 function setup() {
   createCanvas(800, 600);
@@ -184,43 +194,6 @@ function setup() {
   save('hatches-demo.jpg');
 }
 ```
-### Available functions
-- [x] ```stripes(res, colors)``` A randomly striped graphics buffer
-- [x] ```dots(res, colors)```  A randomly dotted graphics buffer
-- [x] ```hatchHorizontal(w, h, d)```
-- [x] ```hatchVertical(w, h, d)```
-- [ ] ```hatchGrid(w, h, d)```
-- [ ] ```hatchDotGrid(w, h, d)```
-- [ ] ```hatchRandomDots(w, h, d)```
-- [ ] ```hatchRandomLines(w, h, d)```
-- [ ] ```hatchMaze(w, h, d)```
-- [ ] ```hatchSinusLines(w, h, d)```
-- [ ] ```hatchFlowField(w, h, d)```
-
-
-## Masking effects
-- ```grainMask(buffer, prob)``` A buffer with a grainy alpha mask
-- ```linesMask(buffer, prob)``` A buffer with a striped alpha mask
-
-```javascript
-// Currently
-const final1 = effects.grainMask(design, d)
-const final2 = effects.linesMask(design, d)
-```
-
-## Random number tools
-- ```randomOffset(val, off)``` A value with random positive or negative offset
-- ```randomZeroOne()``` A random number between 0 and 1
-- ```randomProb()``` True with a 50% percent probability
-- ```givenProb(prob)``` True/false by given probability
-- ```fuzzyValue(val)``` Either a slightly changed or dramtically reduced value
-
-## WEBGL light effects
-- ```randomLight(buffer)```  Sets a white light in a random position in a buffer
-- ```randomColoredLight(buffer, col)``` Sets a colored light in a random position in a buffer
-
-
-# A few old examples
 
 ![matthias-jaeger-net-2](images/canvas.png)
 

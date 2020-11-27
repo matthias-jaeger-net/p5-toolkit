@@ -1,14 +1,13 @@
 # p5-global-effects
 ![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)
 
-
-
-### ``Effects``  is a single JavaScript class I use for post processing and visual trickery in the context of my [p5 sketches](https://p5js.org/).
+### ``Effects``  is a single JavaScript class I use for post processing and visual trickery in the context of my [p5 sketches](https://p5js.org/).  Please feel free to use it in any of your sketches.
 
 ![matthias-jaeger-net-buffer-demo](images/cover-demo.jpg)
-#### Note: Please feel free to use it in any of your sketches. As this is an "art thing", not a professional piece of work, don't be sad if it doesn't work or suddenly changed :-).
+#### Note: As this is an "art thing", not a professional piece of work, don't be sad if it doesn't work or suddenly changed :-).
 
-### Include the script in ```index.html```
+# The Basic idea
+### I include the script in ```index.html```
 ```html
   <script src="p5-global-effects.min.js" defer></script>
   <script src="sketch.js" defer></script>
@@ -21,7 +20,7 @@ function setup() {
 }
 ```
 
-# Check this readme for ideas and inspiration how you could use it  in your own sketches.
+# Check this readme for  inspiration how you could use it  in your own sketches.
 The class is written around the idea of using graphics buffers within your p5 sketch. A graphics buffer can be created with ``createGraphics(w, h, [renderer])``. When called, this function returns a ``p5.Graphics: offsscreen graphics buffer``, which is nothing other then a p5 sketch. You can use it's name with the dot syntax and draw anything into the buffer. It works just like in a regular sketch. With the ``image(img, x, y)`` function we can render any offscreen buffer back onto the stage.
 
 ## Working with buffers is my standard approach

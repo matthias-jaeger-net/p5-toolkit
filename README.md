@@ -6,7 +6,7 @@
 ### ``Effects``  is a single JavaScript class I use for post processing and visual trickery in the context of my [p5 sketches](https://p5js.org/).
 
 ![matthias-jaeger-net-buffer-demo](images/cover-demo.jpg)
-#### Note: Please feel free to use it in any of your sketches. As this is an "art thing", not a professional piece of work, don't be sad if it doesn't work or suddenly changed :-). changed.
+#### Note: Please feel free to use it in any of your sketches. As this is an "art thing", not a professional piece of work, don't be sad if it doesn't work or suddenly changed :-).
 
 ### Include the script in ```index.html```
 ```html

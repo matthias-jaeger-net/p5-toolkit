@@ -1,5 +1,5 @@
 # p5-global-effects
-![matthias-jaeger-net-buffer-demo](images/cover-demo.png)
+![matthias-jaeger-net-buffer-demo](images/cover-demo.jpg)
 ## A single JavaScript file that I use for post processing and visual trickery in the context of [p5 sketches](https://p5js.org/). All of my work here is licenced ![License](https://poser.pugx.org/laravel/lumen-framework/license.svg). So please feel free to use it in any of your sketches. It's an art thing, I wouldn't use it for professional work.
 
 ## I strongly recommend to target the [production version](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.js) or include the [minified version](https://matthias-jaeger-net.github.io/p5-toolkit/dist/p5-global-effects.min.js) of this file. As this is a personal toolkit, the changes I make to this file are often dramatic, so a fork or clone of the current version might save bugs.

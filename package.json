@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "description": "Toolkit for processing/p5 sketches in global mode",
   "private": true,
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/matthias-jaeger-net/p5-toolkit.git"
@@ -19,6 +18,7 @@
   "devDependencies": {
     "eslint": "^7.13.0",
     "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-p5js": "^1.0.1",
     "eslint-plugin-import": "^2.22.1",
     "minify": "^6.0.1"
   }

@@ -6,11 +6,6 @@
  * Date: 2020-11-27
  */
 
-const Effects = {
-
-}
-
-
 // eslint-disable-next-line no-unused-vars
 class Effects {
   constructor(context) {

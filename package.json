@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "description": "Toolkit for processing/p5 sketches in global mode",
   "private": true,
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/matthias-jaeger-net/p5-toolkit.git"

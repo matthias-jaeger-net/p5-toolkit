@@ -5,6 +5,12 @@
  * Author: Matthias Jäger
  * Date: 2020-11-27
  */
+
+const Effects = {
+
+}
+
+
 // eslint-disable-next-line no-unused-vars
 class Effects {
   constructor(context) {
@@ -12,36 +18,27 @@ class Effects {
     // eslint-disable-next-line no-console
     console.log('Effects running');
   }
-  /** RANDOM NUMBER TOOLS */
 
-  // Returns a value with random positive or negative offset
   randomOffset(val, off) {
     return val + this.context.random(-off, off);
   }
 
-  // Shorthand for a random number between 0 and 1
   randomZeroOne() {
     return this.context.random(0.0, 1.0);
   }
 
-  // Returns true with a 50% percent probability
   randomProb() {
     return this.randomZeroOne() > 0.50;
   }
 
-  // Returns true/false by given probability
   givenProb(prob) {
     return this.randomZeroOne() > prob;
   }
 
-  // Returns a either a slightly changed or dramtically reduced value
   fuzzyValue(val) {
     return (this.randomProb() ? this.randomOffset(val, 10.0) : this.context.random(val));
   }
 
-  /** COLOR TOOLS */
-
-  // Returns a random color within the given bounds
   randomShaped(min, max) {
     const r = this.context.random(min, max);
     const g = this.context.random(min, max);
@@ -49,22 +46,18 @@ class Effects {
     return this.context.color(r, g, b);
   }
 
-  // Returns a random color
   randomColor() {
     return this.randomShaped(0, 255);
   }
 
-  // Returns a random color that is bright
   randomBrightColor() {
     return this.randomShaped(155, 255);
   }
 
-  // Returns a random color that is dark
   randomDarkColor() {
     return this.randomShaped(0, 90);
   }
 
-  // Returns a randomly changed color
   shadedColor(col) {
     const r = this.randomOffset(this.context.red(col), 10);
     const g = this.randomOffset(this.context.green(col), 10);
@@ -72,7 +65,6 @@ class Effects {
     return this.context.color(r, g, b);
   }
 
-  // Returns a randomly changed color and public offset
   shadedColorOff(col, off) {
     const r = this.randomOffset(this.context.red(col), off);
     const g = this.randomOffset(this.context.green(col), off);
@@ -80,16 +72,12 @@ class Effects {
     return this.context.color(r, g, b);
   }
 
-  /** COLOR PALETTES */
-
-  // Returns a color palette with a number of colors and a initial color
   randomPalette(col, len) {
     const arr = [col];
     for (let i = 1; i < len; i += 1) arr[i] = this.randomColor();
     return arr;
   }
 
-  // Returns a color palette with colors based on the initial color
   relatedPalette(col, len) {
     const arr = [col];
     const maxOffset = 50.0;
@@ -99,9 +87,6 @@ class Effects {
     return arr;
   }
 
-  /** TEXTURE GENERATORS */
-
-  // Returns a randomly striped graphics buffer
   stripes(res, colors) {
     const stripes = this.context.createGraphics(res, res);
     for (let x = 0; x < stripes.width; x += 1) {
@@ -116,7 +101,6 @@ class Effects {
     return stripes;
   }
 
-  // Returns a randomly dotted graphics buffer
   dots(res, colors) {
     const gfx = this.context.createGraphics(res, res);
     gfx.background(this.context.random(colors));
@@ -132,7 +116,6 @@ class Effects {
     return gfx;
   }
 
-  /** Hatches */
   hatchHorizontal(w, h, d, col) {
     const gfx = this.context.createGraphics(w, h);
     const scl = gfx.height * d;
@@ -160,9 +143,6 @@ class Effects {
     return gfx;
   }
 
-  /** PIXEL EFFECTS */
-
-  // Returns a graphics buffer with dramatically changed colors
   randomBlurX(buffer) {
     const gfx = this.context.createGraphics(buffer.width, buffer.height);
     const bufferPixels = buffer.get();
@@ -178,7 +158,6 @@ class Effects {
     return gfx;
   }
 
-  // Returns a graphics buffer with dramatically changed colors
   fuzzyBlurX(buffer) {
     const gfx = this.context.createGraphics(buffer.width, buffer.height);
     const bufferPixels = buffer.get();
@@ -233,7 +212,6 @@ class Effects {
       }
       grid[x] = this.randomProb() ? cs.sort() : cs;
     }
-
     gfx.loadPixels();
     for (let x = 0; x < gfx.width; x += 1) {
       for (let y = 0; y < gfx.height; y += 1) {
@@ -244,7 +222,6 @@ class Effects {
     return gfx;
   }
 
-  // glitchY
   glitchArea(buffer) {
     const gfx = this.context.createGraphics(buffer.width, buffer.height);
     gfx.loadPixels();
@@ -277,30 +254,8 @@ class Effects {
     return gfx;
   }
 
-  /** LIGHT EFFECTS */
-
-  // Sets a white light in a random position in a buffer
-  randomLight(buffer) {
-    return buffer.pointLight(255, 255, 255,
-      this.context.random(-buffer.width * 0.5, buffer.width * 0.5),
-      this.context.random(-buffer.height * 0.5, buffer.height * 0.5),
-      this.context.random(-buffer.width * 0.5, buffer.width * 0.5));
-  }
-
-  // Sets a colored light in a random position in a buffer
-  randomColoredLight(buffer, col) {
-    const r = this.context.red(col);
-    const g = this.context.green(col);
-    const b = this.context.blue(col);
-    const x = this.context.random(-buffer.width * 0.5, buffer.width * 0.5);
-    const y = this.context.random(-buffer.height * 0.5, buffer.height * 0.5);
-    const z = this.context.random(-buffer.width * 0.5, buffer.width * 0.5);
-    return buffer.pointLight(r, g, b, x, y, z);
-  }
-
   /** MASKING EFFECTS */
 
-  // Returns a buffer with a grainy alpha mask
   grainMask(buffer, prob) {
     const gfx = buffer.get();
     const masking = this.context.createGraphics(buffer.width, buffer.height);
@@ -315,7 +270,6 @@ class Effects {
     return gfx;
   }
 
-  // Returns a buffer with a striped alpha mask
   linesMask(buffer, prob) {
     const gfx = buffer.get();
     const masking = this.context.createGraphics(buffer.width, buffer.height);
@@ -326,5 +280,23 @@ class Effects {
     }
     gfx.mask(masking.get());
     return gfx;
+  }
+
+
+  randomLight(buffer) {
+    return buffer.pointLight(255, 255, 255,
+      this.context.random(-buffer.width * 0.5, buffer.width * 0.5),
+      this.context.random(-buffer.height * 0.5, buffer.height * 0.5),
+      this.context.random(-buffer.width * 0.5, buffer.width * 0.5));
+  }
+
+  randomColoredLight(buffer, col) {
+    const r = this.context.red(col);
+    const g = this.context.green(col);
+    const b = this.context.blue(col);
+    const x = this.context.random(-buffer.width * 0.5, buffer.width * 0.5);
+    const y = this.context.random(-buffer.height * 0.5, buffer.height * 0.5);
+    const z = this.context.random(-buffer.width * 0.5, buffer.width * 0.5);
+    return buffer.pointLight(r, g, b, x, y, z);
   }
 }

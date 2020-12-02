@@ -1,0 +1,1 @@
+(()=>{var e=document.createElement("script");e.src="var a = 10;",document.head.appendChild(e)})();

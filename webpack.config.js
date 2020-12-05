@@ -15,8 +15,7 @@ module.exports = {
     extensions: [ '.tsx', '.ts', '.js' ],
   },
   output: {
-    //library: 'Effects',
-    filename: 'bundle.js',
+    filename: 'p5-global-effects.min.js',
     path: path.resolve(__dirname, 'dist'),
   },
 };

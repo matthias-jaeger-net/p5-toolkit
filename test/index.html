@@ -8,19 +8,17 @@
   <title>Manual Tests</title>
 </head>
 <body>
-  <script src="./../dist/bundle.js"></script>
+  <script src="./../dist/p5-global-effects.min.js"></script>
   <script>
-    function setup() {
+   function setup() {
       const effects = new Effects(this);
-      createCanvas(800, 800);
-      background(effects.randomColor());
-      fill(effects.randomShaped(100, 200));
-      rect(0, 0, 100, 100);
-      fill(effects.randomBrightColor());
-      circle(300, 300, 200);
-
+      createCanvas(800, 400, WEBGL);
+      lights();
+      sphere(150);
       const design = get();
-      image(effects.shiftedPixels(design), 0, 0);
+      clear();
+      image(effects.glitchY(design), -400, -200);
+      save('webgl-demo.jpg');
     }
   </script>
 </body>

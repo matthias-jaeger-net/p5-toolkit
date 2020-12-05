@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js"></script>
+  <title>Manual Tests</title>
+</head>
+<body>
+  <script src="./../dist/bundle.js"></script>
+  <script>
+    function setup() {
+      const effects = new Effects(this);
+      createCanvas(800, 800);
+      background(effects.randomColor());
+      fill(effects.randomShaped(100, 200));
+      rect(0, 0, 100, 100);
+      fill(effects.randomBrightColor());
+      circle(300, 300, 200);
+    }
+  </script>
+</body>
+</html>

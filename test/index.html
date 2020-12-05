@@ -4,22 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js"></script>
   <title>Manual Tests</title>
 </head>
 <body>
   <script src="./../dist/p5-global-effects.min.js"></script>
-  <script>
-   function setup() {
-      const effects = new Effects(this);
-      createCanvas(800, 400, WEBGL);
-      lights();
-      sphere(150);
-      const design = get();
-      clear();
-      image(effects.glitchY(design), -400, -200);
-      save('webgl-demo.jpg');
-    }
-  </script>
+  <script src="test.js"></script>
 </body>
 </html>

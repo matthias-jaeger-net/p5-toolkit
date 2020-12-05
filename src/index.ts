@@ -4,9 +4,12 @@ import { randomOffset } from './random/randomOffset';
 import { randomZeroOne } from './random/randomZeroOne';
 import { randomProb } from './random/randomProb';
 import { fuzzyValue } from './random/fuzzyValue';
-import { randomShaped } from './color/randomShaped';
+
 import { randomColor } from './color/randomColor';
 import { randomBrightColor } from './color/randomBrightColor';
+import { randomDarkColor } from './color/randomDarkColor';
+import { randomShapedColor } from './color/randomShapedColor';
+
 import { mosaic } from './pixel/mosaic';
 import { randomBlurX } from './pixel/randomBlurX';
 import { shiftedPixels } from './pixel/shiftedPixels';
@@ -26,9 +29,12 @@ class Effects {
   public fuzzyValue = (val: number) => fuzzyValue(this.context, val);
 
   /** Random color methods */
-  public randomShaped = (min: number, max: number) => randomShaped(this.context, min, max);
+  public randomShapedColor = (min: number, max: number) =>
+    randomShapedColor(this.context, min, max)
+
   public randomColor = () => randomColor(this.context);
   public randomBrightColor = () => randomBrightColor(this.context);
+  public randomDarkColor = () => randomDarkColor(this.context);
 
   /** Pixel Effects */
   public mosaic = (buffer: p5) => mosaic(this.context, buffer);

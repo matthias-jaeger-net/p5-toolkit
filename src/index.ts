@@ -8,7 +8,7 @@ import { fuzzyValue } from './random/fuzzyValue';
 import { randomColor } from './color/randomColor';
 import { randomBrightColor } from './color/randomBrightColor';
 import { randomDarkColor } from './color/randomDarkColor';
-import { randomShapedColor } from './color/randomShapedColor';
+import { randomShapeColor } from './color/randomShapeColor';
 
 import { mosaic } from './pixel/mosaic';
 import { randomBlurX } from './pixel/randomBlurX';
@@ -29,9 +29,7 @@ class Effects {
   public fuzzyValue = (val: number) => fuzzyValue(this.context, val);
 
   /** Random color methods */
-  public randomShapedColor = (min: number, max: number) =>
-    randomShapedColor(this.context, min, max)
-
+  public randomShapeColor = (min: number, max: number) => randomShapeColor(this.context, min, max);
   public randomColor = () => randomColor(this.context);
   public randomBrightColor = () => randomBrightColor(this.context);
   public randomDarkColor = () => randomDarkColor(this.context);

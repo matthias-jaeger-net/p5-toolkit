@@ -18,6 +18,9 @@
       rect(0, 0, 100, 100);
       fill(effects.randomBrightColor());
       circle(300, 300, 200);
+
+      const design = get();
+      image(effects.shiftedPixels(design), 0, 0);
     }
   </script>
 </body>

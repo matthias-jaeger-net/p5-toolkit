@@ -17,6 +17,7 @@ import { randomBlurX } from './pixel/randomBlurX';
 import { shiftedPixels } from './pixel/shiftedPixels';
 import { fuzzyBlurX } from './pixel/fuzzyBlurX';
 import { glitchY } from './pixel/glitchY';
+import { puzzle } from './pixel/puzzle';
 import { stripes } from './texture/stripes';
 import { dots } from './texture/dots';
 import { hatchHorizontal } from './hatches/hatchHorizontal';
@@ -59,6 +60,7 @@ class Effects {
   public shiftedPixels = (buffer: p5) => shiftedPixels(this.context, buffer);
   public fuzzyBlurX = (buffer: p5) => fuzzyBlurX(this.context, buffer);
   public glitchY = (buffer: p5) => glitchY(this.context, buffer);
+  public puzzle = (buffer: p5, res: number) => puzzle(this.context, buffer, res);
 
   /** Texture */
   public stripes = (res: number, colors: Array<p5.Color>) => stripes(this.context, res, colors);

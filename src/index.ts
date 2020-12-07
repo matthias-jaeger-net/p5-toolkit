@@ -22,6 +22,7 @@ import { dots } from './texture/dots';
 import { hatchHorizontal } from './hatches/hatchHorizontal';
 import { hatchVertical } from './hatches/hatchVertical';
 import { hatchGrid } from './hatches/hatchGrid';
+import { hatchRandomDots } from './hatches/hatchRandomDots';
 import { randomLight } from './light/randomLight';
 import { randomColoredLight } from './light/randomColoredLight';
 import { grainMask } from './mask/grainMask';
@@ -67,6 +68,8 @@ class Effects {
   public hatchVertical = (w: number, h: number, d: number) =>
     hatchVertical(this.context, w, h, d)
   public hatchGrid = (w: number, h: number, d: number) => hatchGrid(this.context, w, h, d);
+  public hatchRandomDots = (w: number, h: number, d: number, col: p5.Color) =>
+    hatchRandomDots(this.context, w, h, d, col)
 
   /** Light */
   public randomLight = (buffer: p5) => randomLight(this.context, buffer);

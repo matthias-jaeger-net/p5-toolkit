@@ -1,29 +1,33 @@
 # p5-toolkit
 ![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)
 
-## A collection of artistic post-processing-effects and other visual trickery in the context of [p5 sketches](https://p5js.org/).
+# A collection of artistic post-processing-effects and other visual trickery in the context of [p5 sketches](https://p5js.org/).
 
+A personal collection of functions I frequently use when I create [generative images](https://www.instagram.com/_matthiasjaeger/). It contains methods for colos, numbertweaks, image effect functions and other useful tools. See a short overview below or browse the [type docs](/docs) for a detailed information. The script adds a globally available class constructor called ``Effects`` to your disposal. The intended use is to locally create a new instance in ```setup()```and use it's methods via the dot-syntax. Include the script in ```index.html``` and use it in ```sketch.js```.
 
-
-## The idea behind this
-A personal collection of functions I frequently use when I create [generative images](/https://www.instagram.com/_matthiasjaeger/). It contains methods for colos, numbertweaks, image effect functions and other useful tools. See a short overview below or browse the [type docs](/docs) for a detailed information.
-
-
-## Basic usage
-The script adds a globally available class constructor called ``Effects`` to your disposal. The intended use is to locally create a new instance in ```setup()```and use it's methods via the dot-syntax.
-
-**Include the script in ```index.html```**
 ```html
   <script src="p5-global-effects.min.js" defer></script>
   <script src="sketch.js" defer></script>
 ```
-**Use it in ```sketch.js```**
 ```javascript
 function setup() {
   const effects = new Effects(this);
   background(effects.randomColor());
 }
 ```
+# The pixel effects
+All pixels effects take a graphics buffer or a preloaded image as an input and return a new buffer with a dramatically changed appearance. In the examples below the effect is applied on the left half of this [landscape](https://unsplash.com/photos/dM8INmkyDas).
+
+## ```randomBlurX(buffer) ```
+![matthias-jaeger-net-buffer-demo](images/randomBlurX.jpg)
+## ```fuzzyBlurX(buffer)```
+![matthias-jaeger-net-buffer-demo](images/fuzzyBlurX.jpg)
+## ```mosaic(buffer)```
+![matthias-jaeger-net-buffer-demo](images/mosaic.jpg)
+## ```shiftedPixels(buffer)```
+![matthias-jaeger-net-buffer-demo](images/shiftedPixels.jpg)
+## ```glitchY(buffer)```
+![matthias-jaeger-net-buffer-demo](images/glitchY.jpg)
 
 # All available Methods
 ## Random number tools

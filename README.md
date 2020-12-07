@@ -28,6 +28,8 @@ All pixels effects take a graphics buffer or a preloaded image as an input and r
 ![matthias-jaeger-net-buffer-demo](images/shiftedPixels.jpg)
 ## ```glitchY(buffer)```
 ![matthias-jaeger-net-buffer-demo](images/glitchY.jpg)
+## ```puzzle(buffer)```
+![matthias-jaeger-net-buffer-demo](images/puzzle.jpg)
 
 # All available Methods
 ## Random number tools

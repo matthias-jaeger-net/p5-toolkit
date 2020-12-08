@@ -84,30 +84,35 @@ All pixels effects take a graphics buffer or a preloaded image as an input and r
 ## Blending effects
 - [ ] ```TODO```
 
-## You want to develop Effects yourself?
+# Do you want to develop Effects?
 ```bash
 # Clone the repository
 git clone git@github.com:matthias-jaeger-net/p5-toolkit.git
-
+```
+```bash
 # Navigate in the directory
 cd p5-toolkit
-
+```
+```bash
 # Install the development tools
 npm install
 ```
-This will install the node modules i use for the development. You can check the [package.json](/package.json) for a full list. Briefly said it will install a very simple Webpack/Typescript setup for you. Having said that, because sometimes it can be strange with node modules...
+NOTE: This will install the node modules I use for the development. You can check the [package.json](/package.json) for a full list. Briefly said it will install a very simple Webpack/Typescript/p5 setup for you. Having said that, because sometimes it can be strange with node modules...
 
 **Available scripts**
 ```bash
 # This generates the minified file in /dist/
 npm run build
-
+```
+```bash
 # This outputs the raw commonjs modules, not used currently
 npm run compile
-
+```
+```bash
 # Have no unit tests so far...
 npm run test
-
+```
+```bash
 # This generates api docs from typescript /src
 npm run docs
 ```

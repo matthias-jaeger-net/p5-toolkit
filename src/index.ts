@@ -1,4 +1,6 @@
 import p5 from 'p5';
+
+// Numbers and colors
 import { randomOffset } from './random/randomOffset';
 import { randomZeroOne } from './random/randomZeroOne';
 import { randomProb } from './random/randomProb';
@@ -12,18 +14,26 @@ import { shadedColor } from './color/shadedColor';
 import { shadedColorOff } from './color/shadedColorOff';
 import { randomPalette } from './color/randomPalette';
 import { relatedPalette } from './color/relatedPalette';
+
+// Pixels
 import { mosaic } from './pixel/mosaic';
 import { randomBlurX } from './pixel/randomBlurX';
 import { shiftedPixels } from './pixel/shiftedPixels';
 import { fuzzyBlurX } from './pixel/fuzzyBlurX';
 import { glitchY } from './pixel/glitchY';
 import { puzzle } from './pixel/puzzle';
+import { gridScapes } from './pixel/gridScapes';
+import { bufferStack } from './pixel/bufferStack';
+
+// Texture, Hatches, Lights
+import { hatchDots } from './hatches/hatchDots';
+
+// Leagcy
 import { stripes } from './texture/stripes';
 import { dots } from './texture/dots';
 import { hatchHorizontal } from './hatches/hatchHorizontal';
 import { hatchVertical } from './hatches/hatchVertical';
 import { hatchGrid } from './hatches/hatchGrid';
-import { hatchRandomDots } from './hatches/hatchRandomDots';
 import { randomLight } from './light/randomLight';
 import { randomColoredLight } from './light/randomColoredLight';
 import { grainMask } from './mask/grainMask';
@@ -49,8 +59,6 @@ class Effects {
   public randomDarkColor = () => randomDarkColor(this.context);
   public shadedColor = (col: p5.Color) => shadedColor(this.context, col);
   public shadedColorOff = (col: p5.Color, val: number) => shadedColorOff(this.context, col, val);
-
-  /** Color methods (Pallettes) */
   public randomPalette = (col: p5.Color, len: number) => randomPalette(this.context, col, len);
   public relatedPalette = (col: p5.Color, len: number) => relatedPalette(this.context, col, len);
 
@@ -60,9 +68,16 @@ class Effects {
   public shiftedPixels = (buffer: p5) => shiftedPixels(this.context, buffer);
   public fuzzyBlurX = (buffer: p5) => fuzzyBlurX(this.context, buffer);
   public glitchY = (buffer: p5) => glitchY(this.context, buffer);
-  public puzzle = (buffer: p5, res: number) => puzzle(this.context, buffer, res);
+  public puzzle = (buffer: p5) => puzzle(this.context, buffer);
+  public gridScapes = (buffer: p5) => gridScapes(this.context, buffer);
+  public bufferStack = (buffer: p5) => bufferStack(this.context, buffer);
 
   /** Texture */
+  public hatchDots = (buffer: p5, density: number, col: p5.Color) =>
+    hatchDots(this.context, buffer, density, col)
+
+
+  // Legacy
   public stripes = (res: number, colors: Array<p5.Color>) => stripes(this.context, res, colors);
   public dots = (res: number, colors: Array<p5.Color>) => dots(this.context, res, colors);
   public hatchHorizontal = (w: number, h: number, d: number) =>
@@ -70,15 +85,9 @@ class Effects {
   public hatchVertical = (w: number, h: number, d: number) =>
     hatchVertical(this.context, w, h, d)
   public hatchGrid = (w: number, h: number, d: number) => hatchGrid(this.context, w, h, d);
-  public hatchRandomDots = (w: number, h: number, d: number, col: p5.Color) =>
-    hatchRandomDots(this.context, w, h, d, col)
-
-  /** Light */
   public randomLight = (buffer: p5) => randomLight(this.context, buffer);
   public randomColoredLight = (buffer: p5, col: p5.Color) =>
     randomColoredLight(this.context, buffer, col)
-
-  /** Masking */
   public grainMask = (buffer: p5, prob: number) => grainMask(this.context, buffer, prob);
   public linesMask = (buffer: p5, prob: number) => linesMask(this.context, buffer, prob);
 }

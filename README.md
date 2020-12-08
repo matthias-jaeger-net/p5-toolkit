@@ -5,13 +5,17 @@
 
 I frequently use this single JavaScript file when I create artistic [generative images](https://www.instagram.com/_matthiasjaeger/). The collection currently contains methods for **colors**, **numbers**, **pixels**, **textures**, **hatches**, **masks** and **other useful tools**. See a short overview below or browse the [type docs](/docs) for a detailed information. These effects could be useful for **artists**, **designers** and fellow **creative coders**. Please be aware that this is a *personal* collection and it might change dramatically without warnings. The script adds a globally available class constructor called ``Effects`` to your disposal. The intended use is to locally create a *new instance* in ```setup()``` and use it's methods via the dot-syntax. Include the script in ```index.html``` and use it in ```sketch.js```.
 
-# Pixel effects
-Core pice of the file are the pixel effects. These are functions that take a ``p5.Graphics`` buffer or a ``p5.Image`` as  input and ``return`` a new buffer with a dramatically changed appearance. In the examples below the effect is applied on the left half of this [landscape photography](https://unsplash.com/photos/dM8INmkyDas).
 ```html
   <!-- index.html -->
   <script src="p5-global-effects.min.js" defer></script>
   <script src="sketch.js" defer></script>
 ```
+
+# Pixel effects
+Core pice of the file are the pixel effects. These are functions that take a ``p5.Graphics`` buffer or a ``p5.Image`` as  input and ``return`` a new buffer with a dramatically changed appearance. In the examples below the effect is applied on the left half of this [landscape photography](https://unsplash.com/photos/dM8INmkyDas).
+
+
+
 ```javascript
 let img, effects;
 
@@ -27,46 +31,49 @@ function setup() {
 }
 ```
 
-## ```randomBlurX(buffer) ```
+### ```randomBlurX(buffer) ```
 ![matthias-jaeger-net-buffer-demo](images/randomBlurX.jpg)
-## ```fuzzyBlurX(buffer)```
+
+### ```fuzzyBlurX(buffer)```
 ![matthias-jaeger-net-buffer-demo](images/fuzzyBlurX.jpg)
-## ```mosaic(buffer)```
+
+### ```mosaic(buffer)```
 ![matthias-jaeger-net-buffer-demo](images/mosaic.jpg)
-## ```shiftedPixels(buffer)```
+
+### ```shiftedPixels(buffer)```
 ![matthias-jaeger-net-buffer-demo](images/shiftedPixels.jpg)
-## ```glitchY(buffer)```
+
+### ```glitchY(buffer)```
 ![matthias-jaeger-net-buffer-demo](images/glitchY.jpg)
-## ```puzzle(buffer)```
+
+### ```puzzle(buffer)```
 ![matthias-jaeger-net-buffer-demo](images/puzzle.jpg)
 
-# All available Methods
-## Random number tools
-- [x] ```randomOffset(val, off)``` A value with random positive or negative offset
-- [x] ```randomZeroOne()``` A random number between 0 and 1
-- [x] ```randomProb()``` True with a 50% percent probability
-- [x] ```givenProb(prob)``` True/false by given probability
-- [x] ```fuzzyValue(val)``` Either a slightly changed or dramtically reduced value
+### ```gridScapes(buffer)```
+![matthias-jaeger-net-buffer-demo](images/gridScapes.jpg)
 
-## Color tools
-- [x] ```randomColor()``` Any possible color
-- [x] ```randomBrightColor()``` A brighter color
-- [x] ```randomDarkColor()``` A darker color
-- [x] ```shadedColor(col)``` A randomly changed color with low offset
-- [x] ```shadedColorOff(col, off)``` A randomly changed color and public offset
-- [x] ```randomPalette(col, len)``` A color palette with a number of colors and a initial color
-- [x] ```relatedPalette(col, len)``` A color palette with colors based on the initial color
-- [ ] ```huePalette(col, len)``` A color palette with evenly spread hue based the initial color
+### ```bufferStack(buffer)```
+![matthias-jaeger-net-buffer-demo](images/bufferStack.jpg)
 
-## Pixel effects
-- [x] ```randomBlurX(buffer) ``` A graphics buffer with dramatically changed colors
-- [x] ```fuzzyBlurX(buffer)``` A graphics buffer with dramatically changed colors
-- [x] ```mosaic(buffer)``` A graphics buffer with a tiled tesselation
-- [x] ```shiftedPixels(buffer)``` A graphics buffer with sifted rows of pixels
-- [x] ```sortColors(buffer)``` A graphics buffer with color sorted pixels
-- [x] ```glitchY(buffer)``` A graphics buffer a dramatic pixel manipulation effect
 
-## Hatches
+# Textures and Hatches
+
+### ```hatchDots(buffer, density, color)```
+![matthias-jaeger-net-buffer-demo](images/hatchDots.jpg)
+```javascript
+function setup() {
+  createCanvas(800, 400);
+  background(255);
+  const effects = new Effects(this);
+  for (let x = 0; x < width; x += 200) {
+    const col = map(x, 0, width, 0, 200);
+    const density = map(x, 0, width, 1, 0.1);
+    image(effects.hatchDots(this, density, col), x, 0, 200, height);
+  }
+}
+```
+Utility functions to help generate and fill buffers, so later on effects can be applied. Currently under construction :D.
+
 - [x] ```stripes(res, colors)``` A really randomly striped graphics buffer
 - [x] ```dots(res, colors)```  A randomly dotted graphics buffer
 - [x] ```hatchHorizontal(w, h, d, col)``` Regular hatching horizontally
@@ -78,6 +85,17 @@ function setup() {
 - [ ] ```hatchMaze(w, h, d)```
 - [ ] ```hatchSinusLines(w, h, d)```
 - [ ] ```hatchFlowField(w, h, d)```
+
+
+# Color tools
+- [x] ```randomColor()``` Any possible color
+- [x] ```randomBrightColor()``` A brighter color
+- [x] ```randomDarkColor()``` A darker color
+- [x] ```shadedColor(col)``` A randomly changed color with low offset
+- [x] ```shadedColorOff(col, off)``` A randomly changed color and public offset
+- [x] ```randomPalette(col, len)``` A color palette with a number of colors and a initial color
+- [x] ```relatedPalette(col, len)``` A color palette with colors based on the initial color
+- [ ] ```huePalette(col, len)``` A color palette with evenly spread hue based the initial color
 
 ## Masking effects
 - [x] ```grainMask(buffer, prob)``` A buffer with a grainy alpha mask

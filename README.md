@@ -99,89 +99,51 @@ function setup() {
 
 Texture functions help me to generate buffers quickly, so later on effects can be applied.  Unlike the pixel effects textures have **more parameters**. A ``buffer`` can be: ``this``, meaning the currrent p5 sketch a passed in ``p5.Image`` or a passed in ``p5.Graphics``, like below. The ``density`` should be a positive number between zero and one and scales the effects in one way or the other. The ``color`` is the third parameter and is a ``p5.Color`` to be used for the generated geometry. In the examples below I used ``color(0)`` which means black, for simplicity, but I vary the density from left tor right. Every texture function will ``return`` a new graphics buffer with an image of the original and the generated geometry on top of it.
 
+**Example: Four times a texture with different density**
+```javascript
+function setup() {
+  createCanvas(800, 400);
+  const effects = new Effects(this);
+  for (let x = 0; x < width; x += width / 4) {
+    const buffer = createGraphics(width / 4, height);
+    buffer.background(255);
+    const density = map(x, 0, width, 0.1, 1.0);
+    const img = effects.dots(buffer, density, color(0));
+    design.image(img, 0, 0);
+    image(design, x, 0);
+  }
+}
+```
 
 ### ```dots(buffer, density, color)```
 ![matthias-jaeger-net-buffer-demo](images/dots.jpg)
-```javascript
-function setup() {
-  createCanvas(800, 400);
-  background(255);
-  const effects = new Effects(this);
-  for (let x = 0; x < width; x += 200) {
-    const design = createGraphics(200, height);
-    const density = map(x, 0, width, 0.1, 1.0);
-    design.image(effects.dots(design, density, color(0)), 0, 0);
-    image(design, x, 0);
-  }
-}
-```
 
 ### ```stripes(buffer, density, color)```
 ![matthias-jaeger-net-buffer-demo](images/stripes.jpg)
-```javascript
-function setup() {
-  createCanvas(800, 400);
-  background(255);
-  const effects = new Effects(this);
-  for (let x = 0; x < width; x += 200) {
-    const design = createGraphics(200, height);
-    const density = map(x, 0, width, 0.1, 1.0);
-    design.image(effects.stripes(design, density, color(0)), 0, 0);
-    image(design, x, 0);
-  }
-}
-```
 
 ### ```bars(buffer, density, color)```
 ![matthias-jaeger-net-buffer-demo](images/bars.jpg)
-```javascript
-function setup() {
-  createCanvas(800, 400);
-  background(255);
-  const effects = new Effects(this);
-  for (let x = 0; x < width; x += 200) {
-    const design = createGraphics(200, height);
-    const density = map(x, 0, width, 0.1, 1.0);
-    design.image(effects.bars(design, density, color(0)), 0, 0);
-    image(design, x, 0);
-  }
-}
-```
 
 ### ```grain(buffer, density, color)```
 ![matthias-jaeger-net-buffer-demo](images/grain.jpg)
-```javascript
-function setup() {
-  createCanvas(800, 400);
-  background(255);
-  const effects = new Effects(this);
-  for (let x = 0; x < width; x += 200) {
-    const design = createGraphics(200, height);
-    const density = map(x, 0, width, 0.1, 1.0);
-    design.image(effects.grain(design, density, color(0)), 0, 0);
-    image(design, x, 0);
-  }
-}
-```
 
 ### ```corroded(buffer, density, color)```
 ![matthias-jaeger-net-buffer-demo](images/corroded.jpg)
-```javascript
-function setup() {
-  createCanvas(800, 400);
-  background(255);
-  const effects = new Effects(this);
-  for (let x = 0; x < width; x += 200) {
-    const design = createGraphics(200, height);
-    const density = map(x, 0, width, 0.1, 1.0);
-    design.image(effects.splashes(design, density, color(0)), 0, 0);
-    image(design, x, 0);
-  }
-}
-```
+
+
+# Color
+- [ ] ```anycolor()``` A randomly picked color
+- [ ] ```bright()``` A randomly picked bright color
+- [ ] ```dark()``` A randomly picked dark color
+- [ ] ```palette(color)``` If given a color it returns an array with 5 simila
 
 
 # Legacy
+- [ ] ```randomBrightColor()``` A brighter color
+- [x] ```randomDarkColor()``` A darker color
+- [x] ```randomPalette(amount)``` An array with 5 random - [x] ```relatedPalette(col, len)``` A color palette with
+- [x] ```shadedColor(col)``` A randomly changed color with low offset
+- [x] ```shadedColorOff(col, off)``` A randomly changed color and public offset
 - [x] ```stripes(res, colors)``` A really randomly striped graphics buffer
 - [x] ```hatchHorizontal(w, h, d, col)``` Regular hatching horizontally
 - [x] ```hatchVertical(w, h, d, col)``` Regular hatching vertically
@@ -192,13 +154,7 @@ function setup() {
 - [ ] ```hatchMaze(w, h, d)```
 - [ ] ```hatchSinusLines(w, h, d)```
 - [ ] ```hatchFlowField(w, h, d)```
-- [x] ```randomColor()``` Any possible color
-- [x] ```randomBrightColor()``` A brighter color
-- [x] ```randomDarkColor()``` A darker color
-- [x] ```shadedColor(col)``` A randomly changed color with low offset
-- [x] ```shadedColorOff(col, off)``` A randomly changed color and public offset
-- [x] ```randomPalette(col, len)``` A color palette with a number of colors and a initial color
-- [x] ```relatedPalette(col, len)``` A color palette with colors based on the initial color
+colors based on the initial color
 - [ ] ```huePalette(col, len)``` A color palette with evenly spread hue based the initial color
 
 - [x] ```grainMask(buffer, prob)``` A buffer with a grainy alpha mask

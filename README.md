@@ -1,20 +1,34 @@
 # p5-toolkit
 ![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)
 
-# A collection of artistic post-processing-effects and other visual trickery in the context of [p5 sketches](https://p5js.org/).
+# A collection of effects and other visual trickery in the context of [p5 sketches](https://p5js.org/).
 
-A personal collection of functions I frequently use when I create [generative images](https://www.instagram.com/_matthiasjaeger/). It contains methods for colos, numbertweaks, image effect functions and other useful tools. See a short overview below or browse the [type docs](/docs) for a detailed information. The script adds a globally available class constructor called ``Effects`` to your disposal. The intended use is to locally create a new instance in ```setup()```and use it's methods via the dot-syntax. Include the script in ```index.html``` and use it in ```sketch.js```.
+I frequently use this single JavaScript file when I create static [generative images](https://www.instagram.com/_matthiasjaeger/). The collection currently contains methods and effects for **colors**, **numbers**, **pixels**, **textures**, **hatches**, **masks** and **other useful tools**.
 
+See a short overview below or browse the [type docs](/docs) for a detailed information. These effects could be useful for **artists**, **designers** and fellow **creative coders**. Please be aware that this is a personal collection and might change dramatically without warnings.
+
+## How to use ```Effects(p5)```
+
+The script adds a globally available class constructor called ``Effects`` to your disposal. The intended use is to locally create a new instance in ```setup()```and use it's methods via the dot-syntax. Include the script in ```index.html``` and use it in ```sketch.js```.
+
+**Basic Example**
 ```html
+  <!-- include the script before your sketch js -->
   <script src="p5-global-effects.min.js" defer></script>
   <script src="sketch.js" defer></script>
 ```
 ```javascript
 function setup() {
+  // Use the methods in your sketch
   const effects = new Effects(this);
+
+  // Color method example
   background(effects.randomColor());
-}
+
+  // Color method example
+  image(effects.randomColor());}
 ```
+
 # The pixel effects
 All pixels effects take a graphics buffer or a preloaded image as an input and return a new buffer with a dramatically changed appearance. In the examples below the effect is applied on the left half of this [landscape](https://unsplash.com/photos/dM8INmkyDas).
 

@@ -5,10 +5,9 @@
 
 I frequently use this single JavaScript file when I create artistic [generative images](https://www.instagram.com/_matthiasjaeger/). The collection currently contains methods for **colors**, **numbers**, **pixels**, **textures**, **hatches**, **masks** and **other useful tools**. See a short overview below or browse the [type docs](/docs) for a detailed information. These effects could be useful for **artists**, **designers** and fellow **creative coders**. Please be aware that this is a *personal* collection and it might change dramatically without warnings. The script adds a globally available class constructor called ``Effects`` to your disposal. The intended use is to locally create a *new instance* in ```setup()``` and use it's methods via the dot-syntax. Include the script in ```index.html``` and use it in ```sketch.js```.
 
-**Consider simple sketch**
-```javascript
-// sketch.js
+**Consider a simple sketch**
 
+```javascript
 let img;
 
 function preload() {
@@ -20,6 +19,8 @@ function setup() {
   image(img, 0, 0);
 }
 ```
+![matthias-jaeger-net-buffer-demo](images/landscape.jpg)
+
 **Include the effects script**
 
 ```html
@@ -29,8 +30,6 @@ function setup() {
 ```
 **Use the class provided by the script**
 ```javascript
-// sketch.js
-
 let img;
 
 function preload() {
@@ -39,18 +38,36 @@ function preload() {
 
 function setup() {
   createCanvas(img.width, img.height);
-
-  // 'Load' the effects
   const effects = new Effects(this);
-
-  // Then, for example you could say ...
-  image(effects.mosaic(img), 0, 0);
-
+  // For example ...
+  image(effects.glitchY(img), 0, 0);
 }
 ```
+![matthias-jaeger-net-buffer-demo](images/glitch-full.jpg)
 
 # Pixel effects
 Core pice of the file are the pixel effects. These are functions that take a ``p5.Graphics`` buffer or a ``p5.Image`` as  input and ``return`` a new buffer with a dramatically changed appearance. In the examples below the effect is applied on the left half of this [landscape photography](https://unsplash.com/photos/dM8INmkyDas).
+
+**Modified example**
+```javascript
+let img;
+
+function preload() {
+  img = loadImage('Shannon-Kunkle.png');
+}
+
+function setup() {
+  createCanvas(img.width, img.height);
+  const effects = new Effects(this);
+
+  // Left side: effects applied
+  image(effects.randomBlurX(img.get(0, 0, img.width / 2, img.height)), 0, 0);
+
+  // Right side: original image data
+  image(img.get(img.width / 2, 0, img.width, img.height), img.width / 2, 0);
+}
+
+```
 
 
 ### ```randomBlurX(buffer) ```
@@ -175,9 +192,6 @@ function setup() {
 - [ ] ```hatchMaze(w, h, d)```
 - [ ] ```hatchSinusLines(w, h, d)```
 - [ ] ```hatchFlowField(w, h, d)```
-
-
-# Color tools
 - [x] ```randomColor()``` Any possible color
 - [x] ```randomBrightColor()``` A brighter color
 - [x] ```randomDarkColor()``` A darker color
@@ -193,7 +207,7 @@ function setup() {
 - [x] ```randomColoredLight(buffer, col)``` Sets a colored light in a random position in a buffer
 
 
-# Do you want to develop Effects?
+# Do you want to develop Effects yourself?
 ```bash
 # Clone the repository
 git clone git@github.com:matthias-jaeger-net/p5-toolkit.git

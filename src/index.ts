@@ -25,19 +25,19 @@ import { puzzle } from './pixel/puzzle';
 import { gridScapes } from './pixel/gridScapes';
 import { bufferStack } from './pixel/bufferStack';
 
-// Texture, Hatches, Lights
-import { hatchDots } from './hatches/hatchDots';
+// Texture
+import { grain } from './hatches/grain';
+import { dots } from './hatches/dots';
+import { corroded } from './hatches/corroded';
+import { stripes } from './hatches/stripes';
+import { bars } from './hatches/bars';
 
-// Leagcy
-import { stripes } from './texture/stripes';
-import { dots } from './texture/dots';
-import { hatchHorizontal } from './hatches/hatchHorizontal';
-import { hatchVertical } from './hatches/hatchVertical';
-import { hatchGrid } from './hatches/hatchGrid';
+// Legacy code
 import { randomLight } from './light/randomLight';
 import { randomColoredLight } from './light/randomColoredLight';
 import { grainMask } from './mask/grainMask';
 import { linesMask } from './mask/linesMask';
+
 
 class Effects {
   public context: p5;
@@ -45,14 +45,14 @@ class Effects {
     this.context = context;
   }
 
-  /** Number methods */
+  /** Number */
   public randomOffset = (val: number, off: number) => randomOffset(this.context, val, off);
   public randomZeroOne = () => randomZeroOne(this.context);
   public randomProb = () => randomProb(this.context);
   public givenProb = (val: number) => givenProb(this.context, val);
   public fuzzyValue = (val: number) => fuzzyValue(this.context, val);
 
-  /** Color methods (Single) */
+  /** Color */
   public randomShapeColor = (min: number, max: number) => randomShapeColor(this.context, min, max);
   public randomColor = () => randomColor(this.context);
   public randomBrightColor = () => randomBrightColor(this.context);
@@ -62,7 +62,7 @@ class Effects {
   public randomPalette = (col: p5.Color, len: number) => randomPalette(this.context, col, len);
   public relatedPalette = (col: p5.Color, len: number) => relatedPalette(this.context, col, len);
 
-  /** Pixel Effects */
+  /** Pixel */
   public mosaic = (buffer: p5) => mosaic(this.context, buffer);
   public randomBlurX = (buffer: p5) => randomBlurX(this.context, buffer);
   public shiftedPixels = (buffer: p5) => shiftedPixels(this.context, buffer);
@@ -73,23 +73,34 @@ class Effects {
   public bufferStack = (buffer: p5) => bufferStack(this.context, buffer);
 
   /** Texture */
-  public hatchDots = (buffer: p5, density: number, col: p5.Color) =>
-    hatchDots(this.context, buffer, density, col)
 
+  public grain = (buffer: p5, density: number, col: p5.Color) =>
+    grain(this.context, buffer, density, col)
 
-  // Legacy
-  public stripes = (res: number, colors: Array<p5.Color>) => stripes(this.context, res, colors);
-  public dots = (res: number, colors: Array<p5.Color>) => dots(this.context, res, colors);
-  public hatchHorizontal = (w: number, h: number, d: number) =>
-    hatchHorizontal(this.context, w, h, d)
-  public hatchVertical = (w: number, h: number, d: number) =>
-    hatchVertical(this.context, w, h, d)
-  public hatchGrid = (w: number, h: number, d: number) => hatchGrid(this.context, w, h, d);
-  public randomLight = (buffer: p5) => randomLight(this.context, buffer);
+  public dots = (buffer: p5, density: number, col: p5.Color) =>
+    dots(this.context, buffer, density, col)
+
+  public corroded = (buffer: p5, density: number, col: p5.Color) =>
+    corroded(this.context, buffer, density, col)
+
+  public stripes = (buffer: p5, density: number, col: p5.Color) =>
+    stripes(this.context, buffer, density, col)
+
+  public bars = (buffer: p5, density: number, col: p5.Color) =>
+    bars(this.context, buffer, density, col)
+
+  // All the legacy stuff
+  public randomLight = (buffer: p5) =>
+    randomLight(this.context, buffer)
+
   public randomColoredLight = (buffer: p5, col: p5.Color) =>
     randomColoredLight(this.context, buffer, col)
-  public grainMask = (buffer: p5, prob: number) => grainMask(this.context, buffer, prob);
-  public linesMask = (buffer: p5, prob: number) => linesMask(this.context, buffer, prob);
+
+  public grainMask = (buffer: p5, prob: number) =>
+    grainMask(this.context, buffer, prob)
+
+  public linesMask = (buffer: p5, prob: number) =>
+    linesMask(this.context, buffer, prob)
 }
 
 declare global {

@@ -1,5 +1,5 @@
 import p5 from 'p5';
-import { givenProb } from '../random/givenProb';
+import { givenProb } from '../choices/givenProb';
 
 export function grainMask(context: p5, buffer: p5, prob: number) {
   const gfx = buffer.get();

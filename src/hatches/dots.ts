@@ -1,14 +1,14 @@
 import p5 from 'p5';
 
-export function dots(context: p5, buffer: p5, density: number, col: p5.Color) {
-  const gfx = context.createGraphics(buffer.width, buffer.height);
-  gfx.image(buffer.get(), 0, 0);
+export function dots(context: p5, w: number, h: number, d: number, c: p5.Color, s: number) {
+  const gfx = context.createGraphics(w, h);
   const maxCell = 100;
-  const cell = maxCell * density;
-  const scl = buffer.width / cell;
+  const cell = maxCell * d;
+  const scl = w / cell;
   for (let x = 0; x < gfx.width; x += scl) {
     for (let y = 0; y < gfx.height; y += scl) {
-      gfx.stroke(col);
+      gfx.strokeWeight(s);
+      gfx.stroke(c);
       gfx.point(x, y);
     }
   }

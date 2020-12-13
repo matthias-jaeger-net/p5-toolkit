@@ -10,6 +10,7 @@ I have been working with [processing](https://processing.org/) and [p5](https://
 ![-](svg/spacer.svg)
 
 ### Include it in your index file
+
 ```html
 <!-- index.html -->
 <script src="p5-global-effects.min.js" defer></script>
@@ -17,6 +18,7 @@ I have been working with [processing](https://processing.org/) and [p5](https://
 ```
 
 ### Use the class in your sketch
+
 ```javascript
 // sketch.js
 

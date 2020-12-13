@@ -93,8 +93,6 @@ function setup() {
 - ```circles```
 - ```striped```
 
-![-](svg/spacer.svg)
-
 ## For developers and nerds
 
 ### Important p5.js concepts you should know

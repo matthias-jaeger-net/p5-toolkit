@@ -1,5 +1,5 @@
 import p5 from 'p5';
-import { prob } from '../../choices/modules/prob';
+import { often } from '../../choices/modules/often';
 
 export function shift(context: p5, buffer: p5) {
   const grid = [];
@@ -26,7 +26,7 @@ export function shift(context: p5, buffer: p5) {
     for (let y = 0; y < offset; y += 1) {
       cs.push(grid[x][y]);
     }
-    grid[x] = prob(context) ? cs.sort() : cs;
+    grid[x] = often(context) ? cs.sort() : cs;
   }
   gfx.loadPixels();
   for (let x = 0; x < gfx.width; x += 1) {

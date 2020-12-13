@@ -1,64 +1,15 @@
+# p5-toolkit ![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)
+
 ![matthias-jaeger-net-buffer-demo](images/cover.jpg)
 
-
-# A personal collection of effects in the context of [p5 sketches](https://p5js.org/).
+## A personal collection of effects in the context of [p5 sketches](https://p5js.org/).
 
 I use this single JavaScript class to quickly create artistic [generative images](https://www.instagram.com/_matthiasjaeger/) with a great variety. The collection contains methods for **colors**, **numbers**, **pixels**, **textures** and **hatches**. See a short overview below or browse the [type docs](/docs) for a detailed information. These effects could be useful for **artists**, **designers** and fellow **creative coders**. Please be aware that this is a *personal* collection and it might change dramatically without warnings. The script adds a globally available class constructor called ``Effects`` to your disposal. The intended use is to locally create a *new instance* in ```setup()``` and use it's methods via the dot-syntax. Include the script in ```index.html``` and use it in ```sketch.js```.
 
-```
-index.ts
-├── numbers
-│   ├── Numbers.ts
-│   └── modules
-│       ├── fuzzy.ts
-│       ├── offset.ts
-│       └── random.ts
-├── choices
-│   ├── Choices.ts
-│   └── modules
-│       ├── often.ts
-│       ├── probability.ts
-│       ├── rarely.ts
-│       └── sometimes.ts
-├── colors
-│   ├── Colors.ts
-│   └── modules
-│       ├── any.ts
-│       ├── anySet.ts
-│       ├── bright.ts
-│       ├── dark.ts
-│       ├── shade.ts
-│       └── shadeSet.ts
-├── pixels
-│   ├── Pixels.ts
-│   └── modules
-│       ├── fuzzy.ts
-│       ├── glitch.ts
-│       ├── glitchArea.ts
-│       ├── linify.ts
-│       ├── mosaic.ts
-│       ├── puzzle.ts
-│       ├── shift.ts
-│       ├── shrink.ts
-│       ├── spread.ts
-│       └── waves.ts
-├── hatches
-│   ├── Hatches.ts
-│   └── modules
-│       ├── bars.ts
-│       ├── corroded.ts
-│       ├── dots.ts
-│       ├── grain.ts
-│       └── stripes.ts
-└── textures
-    ├── Textures.ts
-    └── modules
-        ├── circles.ts
-        └── striped.ts
-```
+### Download the latest script
+It might be better to Download or reference the compiled, minified version of the [p5-global-tools.js](/dist/p5-global-tools.min.js/) file, because I'm adding and removing effects currently
 
-# Beginner Mode
-### Download the compiled js file from this repository
+### Include it in your index file
 ```html
 <!-- index.html -->
 <script src="p5-global-effects.min.js" defer></script>
@@ -99,11 +50,7 @@ function setup() {
   image(effects.pixels.glitch(this.get()), 0, 0);
 }
 ```
-### See the manual documentation for ideas
-
-
-# Expert
-### How to tweak and customize everything
+### How to tweak and customize everything?
 ```bash
 # Clone the repository
 git clone git@github.com:matthias-jaeger-net/p5-toolkit.git
@@ -133,5 +80,3 @@ npm run test
 # This generates api docs from typescript /src
 npm run docs
 ```
-
-# Yeti Expert?

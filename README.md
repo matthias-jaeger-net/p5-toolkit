@@ -1,8 +1,13 @@
 ![p5-toolkit](svg/header.svg)
 
-# A personal collection
-I have been working with [processing](https://processing.org/) and [p5](https://p5js.org/) for many years now and realized I have written the same, or very similar code all the time. When it comes to the topic of **generating single static images**, that highly depend on randomized geometry, texture and colors I have been copying and merging code between my projects. For this repository it is my goal to make these methods not only reusable for myself but to share it with you guys. It's a personal collection of methods and concepts I use for my artistic generative images on my [instagram](https://www.instagram.com/_matthiasjaeger/), [webiste](https://matthias-jaaeger.net/) and [blog](https://rbs46.net/). These effects could be useful for **artists**, **designers** and fellow **creative coders**. The collection contains methods for **colors**, **numbers**, **pixels**, **textures** and **hatches**. See a short overview below or browse the [type docs](/docs) for a detailed information. The script adds a globally available class constructor called ``Effects`` to your disposal. The intended use is to locally create a *new instance* in ```setup()``` and use it's methods via the dot-syntax. Include the script in ```index.html``` and use it in ```sketch.js```.
+### A personal collection of effects
+![download](svg/spacer.svg)
 
+I have been working with [processing](https://processing.org/) and [p5](https://p5js.org/) for many years now and realized I have written the same, or very similar code all the time. When it comes to the topic of **generating single static images**, that highly depend on randomized geometry, texture and colors I have been copying and merging code between my projects. For this repository it is my goal to make these methods not only reusable for myself but to share it with you guys. It's a personal collection of methods and concepts I use for my artistic generative images on my [instagram](https://www.instagram.com/_matthiasjaeger/), [webiste](https://matthias-jaaeger.net/) and [blog](https://rbs46.net/). These effects could be useful for **artists**, **designers** and fellow **creative coders**. The collection contains methods for **colors**, **numbers**, **pixels**, **textures** and **hatches**. See a short overview below or browse the [type docs](/docs) for a detailed information. The script adds a globally available class constructor called ``Effects`` to your disposal. The intended use is to locally create a *new instance* in ```setup()``` and use it's methods via the dot-syntax. Include the script in ```index.html``` and use it in ```sketch.js```. Please be aware that this is a *ongoing* collection and it might change dramatically without warnings.
+
+[![download](svg/download.svg)](https://github.com/matthias-jaeger-net/p5-toolkit/tree/main/dist "Download")
+
+![download](svg/spacer.svg)
 
 ### Include it in your index file
 ```html
@@ -19,12 +24,10 @@ function setup() {
   // Create the 'main' canvas
   createCanvas(800, 400);
 
-  // Create a new instance of Effects
-  // 'this' p5 sketch is passed as argument
+  // Effects: 'this' p5 sketch is passed as argument
   const effects = new Effects(this);
 
   // I start with defining random colors
-  // All colors return a p5 color
   const brand = effects.colors.any();
   const bright = effects.colors.bright();
   const dark = effects.colors.dark();
@@ -36,16 +39,17 @@ function setup() {
   const stripes = effects.hatches.stripes(width, height,  random(), dark,  random(3));
   const bars = effects.hatches.bars(width, height,  random(), dark,  random(3));
 
-  // Rendering
+  // Rendering with ps's image() function
   background(bright);
   image(grain, 0, 0);
   image(stripes, 0, 0);
   image(bars, 0, 0);
 
-  // Post process
+  // Post process?
   image(effects.pixels.glitch(this.get()), 0, 0);
 }
 ```
+![download](svg/spacer.svg)
 
 ### Available methods
 #### choices
@@ -88,26 +92,23 @@ function setup() {
 - ```circles```
 - ```striped```
 
+![download](svg/spacer.svg)
+
+## For developers and nerds
 
 
-### Important p5.js concepts to know
-- Load an image
-- - https://p5js.org/reference/#/p5/loadImage
-- Display images (or buffers)
-- - https://p5js.org/reference/#/p5/image
-- Graphics buffers
-- - https://p5js.org/reference/#/p5/createGraphics
-- Color
-- - https://p5js.org/reference/#/p5/color
-- Mode
-- - https://github.com/processing/p5.js/wiki/Global-and-instance-mode
+#### Important p5.js concepts you should know
+- Load an image: https://p5js.org/reference/#/p5/loadImage
+- Display images (or buffers): https://p5js.org/reference/#/p5/image
+- Graphics buffers: https://p5js.org/reference/#/p5/createGraphics
+- Color: https://p5js.org/reference/#/p5/color
+- How p5 works generally: https://github.com/processing/p5.js/wiki/Global-and-instance-mode
 
+#### Tools I am using here
+This will install the node modules I use for the development. You can check the [package.json](/package.json) for a full list. Briefly said it will install a very simple Webpack/Typescript/p5 setup for you. Having said that, because sometimes it can be strange with node modules...
 
-### Please be aware that this is a *ongoing* collection and it might change dramatically without warnings :D.
-[![download](svg/download.svg)](https://github.com/matthias-jaeger-net/p5-toolkit/tree/main/dist "Download")
+#### Install
 
-
-# Tweak and customize everything yourself?
 ```bash
 # Clone the repository
 git clone git@github.com:matthias-jaeger-net/p5-toolkit.git
@@ -118,9 +119,9 @@ cd p5-toolkit
 # Install the development tools
 npm install
 ```
-NOTE: This will install the node modules I use for the development. You can check the [package.json](/package.json) for a full list. Briefly said it will install a very simple Webpack/Typescript/p5 setup for you. Having said that, because sometimes it can be strange with node modules...
 
-## Available scripts
+
+#### Available scripts
 ```bash
 # This generates the minified file in /dist/
 npm run build

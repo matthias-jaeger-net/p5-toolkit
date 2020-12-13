@@ -1,7 +1,6 @@
 ![p5-toolkit](svg/header.svg)
 
-### A personal collection of effects
-![download](svg/spacer.svg)
+## A personal collection of effects
 
 I have been working with [processing](https://processing.org/) and [p5](https://p5js.org/) for many years now and realized I have written the same, or very similar code all the time. When it comes to the topic of **generating single static images**, that highly depend on randomized geometry, texture and colors I have been copying and merging code between my projects. For this repository it is my goal to make these methods not only reusable for myself but to share it with you guys. It's a personal collection of methods and concepts I use for my artistic generative images on my [instagram](https://www.instagram.com/_matthiasjaeger/), [webiste](https://matthias-jaaeger.net/) and [blog](https://rbs46.net/). These effects could be useful for **artists**, **designers** and fellow **creative coders**. The collection contains methods for **colors**, **numbers**, **pixels**, **textures** and **hatches**. See a short overview below or browse the [type docs](/docs) for a detailed information. The script adds a globally available class constructor called ``Effects`` to your disposal. The intended use is to locally create a *new instance* in ```setup()``` and use it's methods via the dot-syntax. Include the script in ```index.html``` and use it in ```sketch.js```. Please be aware that this is a *ongoing* collection and it might change dramatically without warnings.
 
@@ -52,9 +51,9 @@ function setup() {
 }
 ```
 
-![-](svg/spacer.svg)
-
 ### Available methods
+
+![-](svg/spacer.svg)
 
 #### choices
 - ```probability(val)``` Returns true if val is larger than  - ```random()```

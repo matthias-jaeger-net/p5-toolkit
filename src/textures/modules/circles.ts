@@ -1,5 +1,5 @@
 import p5 from 'p5';
-import { shade } from '../colors/shade';
+import { shade } from '../../colors/modules/shade';
 
 export function circles(context: p5, res: number, colors: Array<p5.Color>) {
   const gfx = context.createGraphics(res, res);

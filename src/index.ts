@@ -1,5 +1,6 @@
 import p5 from 'p5';
 
+import { Numbers } from './numbers/Numbers';
 import { Choices } from './choices/Choices';
 import { Colors } from './colors/Colors';
 import { Pixels } from './pixels/Pixels';

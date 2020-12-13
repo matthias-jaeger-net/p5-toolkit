@@ -1,5 +1,5 @@
 import p5 from 'p5';
-import { offset } from '../choices/offset';
+import { offset } from '../../numbers/modules/offset';
 
 export function shade(context: p5, col: p5.Color, off: number) {
   const r = offset(context, context.red(col), off);

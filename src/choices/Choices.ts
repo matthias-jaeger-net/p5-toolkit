@@ -1,7 +1,8 @@
 import p5 from 'p5';
-import { offset } from './offset';
-import { prob } from './prob';
-import { givenProb } from './givenProb';
+import { often } from './modules/often';
+import { sometimes } from './modules/sometimes';
+import { rarely } from './modules/rarely';
+import { probability } from './modules/probability';
 
 export class Choices {
   public context: p5;
@@ -9,11 +10,9 @@ export class Choices {
   constructor(context: p5) {
     this.context = context;
   }
-  // Often true
-  // Sometimes true
-  // Rarely true
-  // Prob (val)
-  prob = () => prob(this.context);
-  givenProb = (val: number) => givenProb(this.context, val);
-  offset = (val: number, off: number) => offset(this.context, val, off);
+
+  often = () => often(this.context);
+  sometimes = () => sometimes(this.context);
+  rarely = () => rarely(this.context);
+  probability = (prob: number) => probability(this.context, prob);
 }

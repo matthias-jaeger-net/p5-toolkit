@@ -1,9 +1,9 @@
 import p5 from 'p5';
-import { dots } from './dots';
-import { stripes } from './stripes';
-import { bars } from './bars';
-import { grain } from './grain';
-import { corroded } from './corroded';
+import { dots } from './modules/dots';
+import { stripes } from './modules/stripes';
+import { bars } from './modules/bars';
+import { grain } from './modules/grain';
+import { corroded } from './modules/corroded';
 
 export class Hatches {
   public context: p5;

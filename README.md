@@ -5,6 +5,58 @@
 
 I use this single JavaScript class to quickly create artistic [generative images](https://www.instagram.com/_matthiasjaeger/) with a great variety. The collection contains methods for **colors**, **numbers**, **pixels**, **textures** and **hatches**. See a short overview below or browse the [type docs](/docs) for a detailed information. These effects could be useful for **artists**, **designers** and fellow **creative coders**. Please be aware that this is a *personal* collection and it might change dramatically without warnings. The script adds a globally available class constructor called ``Effects`` to your disposal. The intended use is to locally create a *new instance* in ```setup()``` and use it's methods via the dot-syntax. Include the script in ```index.html``` and use it in ```sketch.js```.
 
+```
+index.ts
+├── numbers
+│   ├── Numbers.ts
+│   └── modules
+│       ├── fuzzy.ts
+│       ├── offset.ts
+│       └── random.ts
+├── choices
+│   ├── Choices.ts
+│   └── modules
+│       ├── often.ts
+│       ├── probability.ts
+│       ├── rarely.ts
+│       └── sometimes.ts
+├── colors
+│   ├── Colors.ts
+│   └── modules
+│       ├── any.ts
+│       ├── anySet.ts
+│       ├── bright.ts
+│       ├── dark.ts
+│       ├── shade.ts
+│       └── shadeSet.ts
+├── pixels
+│   ├── Pixels.ts
+│   └── modules
+│       ├── fuzzy.ts
+│       ├── glitch.ts
+│       ├── glitchArea.ts
+│       ├── linify.ts
+│       ├── mosaic.ts
+│       ├── puzzle.ts
+│       ├── shift.ts
+│       ├── shrink.ts
+│       ├── spread.ts
+│       └── waves.ts
+├── hatches
+│   ├── Hatches.ts
+│   └── modules
+│       ├── bars.ts
+│       ├── corroded.ts
+│       ├── dots.ts
+│       ├── grain.ts
+│       └── stripes.ts
+└── textures
+    ├── Textures.ts
+    └── modules
+        ├── circles.ts
+        └── striped.ts
+```
+
 # Beginner Mode
 ### Download the compiled js file from this repository
 ```html

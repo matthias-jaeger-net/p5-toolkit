@@ -1,5 +1,5 @@
 import p5 from 'p5';
-import { prob } from '../choices/prob';
+import { prob } from '../../choices/modules/prob';
 
 export function shift(context: p5, buffer: p5) {
   const grid = [];

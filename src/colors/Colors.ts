@@ -1,10 +1,10 @@
 import p5 from 'p5';
-import { any } from './any';
-import { bright } from './bright';
-import { dark } from './dark';
-import { shade } from './shade';
-import { anySet } from './anySet';
-import { shadeSet } from './shadeSet';
+import { any } from './modules/any';
+import { bright } from './modules/bright';
+import { dark } from './modules/dark';
+import { shade } from './modules/shade';
+import { anySet } from './modules/anySet';
+import { shadeSet } from './modules/shadeSet';
 
 export class Colors {
   public context: p5;

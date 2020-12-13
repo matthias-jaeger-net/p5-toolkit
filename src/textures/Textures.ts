@@ -1,7 +1,6 @@
 import p5 from 'p5';
-
-import { circles } from './circles';
-import { striped } from './striped';
+import { circles } from './modules/circles';
+import { striped } from './modules/striped';
 
 export class Textures {
   public context: p5;

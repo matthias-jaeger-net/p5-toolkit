@@ -1,6 +1,6 @@
 import p5 from 'p5';
-import { shade } from '../colors/shade';
-import { prob } from '../choices/prob';
+import { shade } from '../../colors/modules/shade';
+import { prob } from '../../choices/modules/prob';
 
 export function striped(context: p5, res: number, colors: Array<p5.Color>) {
   const gfx = context.createGraphics(res, res);

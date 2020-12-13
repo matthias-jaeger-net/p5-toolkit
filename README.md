@@ -1,13 +1,9 @@
-# p5-toolkit ![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)
+![p5-toolkit](svg/header.svg)
 
-![matthias-jaeger-net-buffer-demo](images/cover.jpg)
-
-## A personal collection of effects in the context of [p5 sketches](https://p5js.org/).
-
-I use this single JavaScript class to quickly create artistic [generative images](https://www.instagram.com/_matthiasjaeger/) with a great variety. The collection contains methods for **colors**, **numbers**, **pixels**, **textures** and **hatches**. See a short overview below or browse the [type docs](/docs) for a detailed information. These effects could be useful for **artists**, **designers** and fellow **creative coders**. Please be aware that this is a *personal* collection and it might change dramatically without warnings. The script adds a globally available class constructor called ``Effects`` to your disposal. The intended use is to locally create a *new instance* in ```setup()``` and use it's methods via the dot-syntax. Include the script in ```index.html``` and use it in ```sketch.js```.
+A personal collection of effects in the context of [p5 sketches](https://p5js.org/). I use this single JavaScript class to quickly create artistic [generative images](https://www.instagram.com/_matthiasjaeger/) with a great variety. The collection contains methods for **colors**, **numbers**, **pixels**, **textures** and **hatches**. See a short overview below or browse the [type docs](/docs) for a detailed information. These effects could be useful for **artists**, **designers** and fellow **creative coders**. Please be aware that this is a *personal* collection and it might change dramatically without warnings. The script adds a globally available class constructor called ``Effects`` to your disposal. The intended use is to locally create a *new instance* in ```setup()``` and use it's methods via the dot-syntax. Include the script in ```index.html``` and use it in ```sketch.js```.
 
 ### Download the latest script
-It might be better to Download or reference the compiled, minified version of the [p5-global-tools.js](/dist/p5-global-tools.min.js/) file, because I'm adding and removing effects currently
+It might be better to Download or reference the compiled, minified version of the [p5-global-tools.js](https://github.com/matthias-jaeger-net/p5-toolkit/tree/main/dist) file, because I'm adding and removing effects currently
 
 ### Include it in your index file
 ```html

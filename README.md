@@ -7,7 +7,7 @@ I have been working with [processing](https://processing.org/) and [p5](https://
 
 [![download](svg/download.svg)](https://github.com/matthias-jaeger-net/p5-toolkit/tree/main/dist "Download")
 
-![download](svg/spacer.svg)
+![-](svg/spacer.svg)
 
 ### Include it in your index file
 ```html
@@ -49,9 +49,11 @@ function setup() {
   image(effects.pixels.glitch(this.get()), 0, 0);
 }
 ```
-![download](svg/spacer.svg)
+
+![-](svg/spacer.svg)
 
 ### Available methods
+
 #### choices
 - ```probability(val)``` Returns true if val is larger than  - ```random()```
 - ```sometimes()``` Returns true with 0.5 probability
@@ -92,10 +94,9 @@ function setup() {
 - ```circles```
 - ```striped```
 
-![download](svg/spacer.svg)
+![-](svg/spacer.svg)
 
-## For developers and nerds
-
+### For developers and nerds
 
 #### Important p5.js concepts you should know
 - Load an image: https://p5js.org/reference/#/p5/loadImage

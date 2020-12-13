@@ -2,15 +2,13 @@
 
 A personal collection of effects in the context of [p5 sketches](https://p5js.org/). I use this single JavaScript class to quickly create artistic [generative images](https://www.instagram.com/_matthiasjaeger/) with a great variety. The collection contains methods for **colors**, **numbers**, **pixels**, **textures** and **hatches**. See a short overview below or browse the [type docs](/docs) for a detailed information. These effects could be useful for **artists**, **designers** and fellow **creative coders**. Please be aware that this is a *personal* collection and it might change dramatically without warnings. The script adds a globally available class constructor called ``Effects`` to your disposal. The intended use is to locally create a *new instance* in ```setup()``` and use it's methods via the dot-syntax. Include the script in ```index.html``` and use it in ```sketch.js```.
 
-[![download](svg/download.svg)](https://github.com/matthias-jaeger-net/p5-toolkit/tree/main/dist "Download")
-
-
 ### Include it in your index file
 ```html
 <!-- index.html -->
 <script src="p5-global-effects.min.js" defer></script>
 <script src="sketch.js" defer></script>
 ```
+
 ### Use the class in your sketch
 ```javascript
 // sketch.js
@@ -46,7 +44,11 @@ function setup() {
   image(effects.pixels.glitch(this.get()), 0, 0);
 }
 ```
-### How to tweak and customize everything?
+
+[![download](svg/download.svg)](https://github.com/matthias-jaeger-net/p5-toolkit/tree/main/dist "Download")
+
+
+### Or tweak and customize everything yourself?
 ```bash
 # Clone the repository
 git clone git@github.com:matthias-jaeger-net/p5-toolkit.git
